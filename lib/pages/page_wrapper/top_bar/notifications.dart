@@ -1,16 +1,14 @@
 // Dart imports:
 
-// Flutter imports:
-import 'package:flutter/material.dart';
-
-// Package imports:
-import 'package:material_symbols_icons/material_symbols_icons.dart';
-
 // Project imports:
 import 'package:exdock_backoffice/globals/globals.dart';
 import 'package:exdock_backoffice/globals/variables.dart';
 import 'package:exdock_backoffice/utils/HTTP/connect_websocket_stream.dart';
 import 'package:exdock_backoffice/utils/authentication/authentication_data.dart';
+// Flutter imports:
+import 'package:flutter/material.dart';
+// Package imports:
+import 'package:material_symbols_icons/material_symbols_icons.dart';
 
 class Notifications extends StatefulWidget {
   const Notifications({super.key});
@@ -44,7 +42,10 @@ class _NotificationsState extends State<Notifications> {
       if (e is NotAuthenticatedException) {
         throw NotAuthenticatedException("");
       }
-      throw Exception("Error parsing URI: $e");
+      // if (e is Exception) {
+      //   router.push("/login");
+      // }
+      // throw Exception("Error parsing URI: $e");
     }
   }
 
