@@ -54,6 +54,7 @@ dependencies:
   http: ^1.4.0
   jwt_decoder: ^2.0.1
   dropdown_button2: ^2.3.9
+  flutter_breadcrumb: ^1.0.1
 
 dev_dependencies:
   flutter_test:
