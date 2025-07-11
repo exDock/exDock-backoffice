@@ -14,14 +14,18 @@ class Settings {
 
   T getSetting<T>(String key) {
     try {
-      if (settingsMap.containsKey(key)) {
-        return settingsMap[key] as T;
+      if (prefs.containsKey(key)) {
+        return prefs.get(key) as T;
       } else {
-        if (prefs.containsKey(key)) {
-          return prefs.get(key) as T;
-        } else {
-          throw Exception("Could not find setting: $key");
+        if (settingsMap.containsKey(key)) {
+          final dynamic value = settingsMap[key];
+          if (value is T) {
+            return value;
+          } else {
+            throw Exception("Type mismatch for key: $key");
+          }
         }
+        throw Exception("Could not find setting: $key");
       }
     } catch (e) {
       print(e);
@@ -29,31 +33,31 @@ class Settings {
     }
   }
 
-  void setSetting<T>(String key, T value) {
+  Future<void> setSetting<T>(String key, T value) async {
     switch (T.toString()) {
       case "String":
         {
-          prefs.setString(key, value as String);
+          await prefs.setString(key, value as String);
           break;
         }
       case "int":
         {
-          prefs.setInt(key, value as int);
+          await prefs.setInt(key, value as int);
           break;
         }
       case "double":
         {
-          prefs.setDouble(key, value as double);
+          await prefs.setDouble(key, value as double);
           break;
         }
       case "bool":
         {
-          prefs.setBool(key, value as bool);
+          await prefs.setBool(key, value as bool);
           break;
         }
       default:
         {
-          prefs.setString(key, jsonEncode(value));
+          await prefs.setString(key, jsonEncode(value));
           break;
         }
     }
