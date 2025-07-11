@@ -1,15 +1,13 @@
 // Flutter imports:
-import 'package:flutter/material.dart';
-
-// Package imports:
-import 'package:http/http.dart';
-import 'package:kumi_popup_window/kumi_popup_window.dart';
-
 // Project imports:
 import 'package:exdock_backoffice/globals/variables.dart';
 import 'package:exdock_backoffice/widgets/buttons/exdock_button.dart';
 import 'package:exdock_backoffice/widgets/input/exdock_text_field.dart';
 import 'package:exdock_backoffice/widgets/popup/exdock_big_popup.dart';
+import 'package:flutter/material.dart';
+// Package imports:
+import 'package:http/http.dart';
+import 'package:kumi_popup_window/kumi_popup_window.dart';
 
 class LoginSettings extends StatefulWidget {
   const LoginSettings({super.key});
@@ -50,6 +48,12 @@ class _LoginSettingsState extends State<LoginSettings> {
         isValidated.value = false;
         return;
       }
+    }
+
+    void saveSettings() async {
+      await settings.setSetting("base_url", controller.text);
+      if (mounted) return;
+      Navigator.pop(context);
     }
 
     return IconButton(
@@ -106,13 +110,7 @@ class _LoginSettingsState extends State<LoginSettings> {
                                     alignment: Alignment.bottomRight,
                                     child: ExdockButton(
                                       label: "Save",
-                                      onPressed: () {
-                                        settings.setSetting(
-                                          "base_url",
-                                          controller.text,
-                                        );
-                                        Navigator.pop(context);
-                                      },
+                                      onPressed: saveSettings,
                                     ),
                                   )
                                 : Align(
