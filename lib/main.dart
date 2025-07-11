@@ -2,17 +2,15 @@
 import 'dart:async';
 import 'dart:developer' as developer;
 
-// Flutter imports:
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-
-// Package imports:
-import 'package:flutter_web_plugins/flutter_web_plugins.dart';
-import 'package:go_router/go_router.dart';
-
 // Project imports:
 import 'package:exdock_backoffice/router/router.dart';
 import 'package:exdock_backoffice/utils/startup.dart';
+// Flutter imports:
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+// Package imports:
+import 'package:flutter_web_plugins/flutter_web_plugins.dart';
+import 'package:go_router/go_router.dart';
 
 void main() async {
   // --- Use runZonedGuarded as the outermost error handler ---
@@ -53,7 +51,6 @@ void main() async {
       if (router.configuration.routes.isNotEmpty &&
           error.runtimeType.toString() == "NotAuthenticatedException") {
         WidgetsBinding.instance.addPostFrameCallback((_) {
-          print("tets");
           router.push('/login');
         });
       }
