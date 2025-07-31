@@ -1,4 +1,5 @@
 import 'package:exdock_backoffice/pages/files/blocks/files/files.dart';
+import 'package:exdock_backoffice/router/router.dart';
 import 'package:exdock_backoffice/utils/map_notifier.dart';
 import 'package:flutter/material.dart';
 
@@ -73,8 +74,9 @@ class _FileEntryState extends State<FileEntry> {
             if (originalValue.isEmpty) {
               newValue = "$originalValue${widget.file.fileName}";
             }
-            widget.changeAttributeMap
-                .updateEntry("path", originalValue, newValue);
+
+            newValue = newValue.replaceAll("/", "%2F");
+            router.push("/files?path=$newValue");
           },
           child: Container(
             padding: const EdgeInsets.all(16),

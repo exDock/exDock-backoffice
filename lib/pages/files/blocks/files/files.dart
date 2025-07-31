@@ -177,9 +177,9 @@ class Files extends StatelessWidget {
 
           final List<Widget> fileWidgets = files.map((fileJson) {
             final EngineFile file = EngineFile(
-              fileName: fileJson["fileName"] as String,
+              fileName: fileJson["file_name"] as String,
               extension: fileJson["extension"] as String,
-              fileSize: fileJson["fileSize"] as int,
+              fileSize: fileJson["file_size"] as int,
             );
 
             return FileEntry(

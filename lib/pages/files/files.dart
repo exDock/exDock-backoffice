@@ -28,6 +28,7 @@ class _FilesState extends State<Files> {
       future: getFilesData(),
       builder: (context, snapshot) {
         if (snapshot.hasError) {
+          print(snapshot.error);
           return const Placeholder();
         }
 

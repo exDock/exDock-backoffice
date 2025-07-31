@@ -1,6 +1,7 @@
 // Flutter imports:
 // Project imports:
 import 'package:exdock_backoffice/globals/globals.dart';
+import 'package:exdock_backoffice/pages/files/top_bar/file_breadcrumb_item.dart';
 import 'package:exdock_backoffice/utils/map_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_breadcrumb/flutter_breadcrumb.dart';
@@ -22,27 +23,16 @@ class TopBar extends StatefulWidget {
 class _TopBarState extends State<TopBar> {
   @override
   Widget build(BuildContext context) {
-    final List<String> pathSplit = widget.path.split("%2F");
+    final List<String> pathSplit =
+        widget.changeAttributeMap.value["path"].split("%2F");
     final List<BreadCrumbItem> breadcrumbs = [];
 
     breadcrumbs.add(
       BreadCrumbItem(
-        content: GestureDetector(
-          onTap: () {
-            final String path =
-                widget.changeAttributeMap.value["path"] as String;
-
-            if (path != "") {
-              widget.changeAttributeMap.updateEntry("path", path, "");
-            }
-          },
-          child: const Text(
-            "Home",
-            style: TextStyle(
-              fontSize: 25,
-              color: Colors.white,
-            ),
-          ),
+        content: FileBreadCrumbItem(
+          title: "Home",
+          pathSplit: const [],
+          changeAttributeMap: widget.changeAttributeMap,
         ),
       ),
     );
@@ -50,25 +40,10 @@ class _TopBarState extends State<TopBar> {
     for (final pathString in pathSplit) {
       breadcrumbs.add(
         BreadCrumbItem(
-          content: GestureDetector(
-            onTap: () {
-              final String path =
-                  widget.changeAttributeMap.value["path"] as String;
-              final String newPath = pathSplit
-                  .sublist(0, pathSplit.indexOf(pathString) + 1)
-                  .join("%2F");
-
-              if (path != newPath) {
-                widget.changeAttributeMap.updateEntry("path", path, newPath);
-              }
-            },
-            child: Text(
-              pathString,
-              style: const TextStyle(
-                fontSize: 25,
-                color: Colors.white,
-              ),
-            ),
+          content: FileBreadCrumbItem(
+            title: pathString,
+            pathSplit: pathSplit,
+            changeAttributeMap: widget.changeAttributeMap,
           ),
         ),
       );

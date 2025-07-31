@@ -22,6 +22,10 @@ class _FilesSynchronousState extends State<FilesSynchronous> {
 
   @override
   void initState() {
+    String? path = Uri.base.queryParameters["path"]?.replaceAll("/", "%2F");
+
+    path ??= "";
+
     widget.changeAttributeMap.addEntry("path", path);
     widget.changeAttributeMap.addListener(() {
       setState(() {
