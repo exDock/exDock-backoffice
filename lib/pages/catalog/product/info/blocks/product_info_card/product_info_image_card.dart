@@ -49,14 +49,13 @@ class _ProductInfoImageCardState extends State<ProductInfoImageCard> {
 
     if (pickedFile != null) {
       try {
-        final String sku = widget.block.value["attributes"][0]
-            ["current_attribute_value"] as String;
+        final List<String> segments = Uri.base.pathSegments;
+        final String id = segments.last;
         const String name = "test";
         final Uint8List imageBytes = await pickedFile.readAsBytes();
         final String fileName = pickedFile.name;
-        const String baseRequestUrl = "/api/v1/image";
-        final String endpoint =
-            "/api/v1/image/products%2F$sku-$name%2F$fileName";
+        final String endpoint = "products%2F$id-$name%2F$fileName";
+        final String baseRequestUrl = "/api/v1/image/upload/$endpoint";
         String contentType = pickedFile.mimeType ?? "image/jpeg";
         if (contentType.isEmpty) {
           contentType = "image/jpeg"; // Default to JPEG if mime type is empty
@@ -64,11 +63,6 @@ class _ProductInfoImageCardState extends State<ProductInfoImageCard> {
         final String body = const Base64Encoder().convert(imageBytes);
         final HttpData uploadRequest = await standardPostRequest(
           baseRequestUrl,
-          jsonEncode(body),
-          {HttpHeaders.contentTypeHeader: contentType},
-        );
-        final HttpData httpData = await standardPostRequest(
-          endpoint,
           jsonEncode(body),
           {HttpHeaders.contentTypeHeader: contentType},
         );
@@ -86,7 +80,7 @@ class _ProductInfoImageCardState extends State<ProductInfoImageCard> {
     }).toList();
     final List<Widget> imageWidgets = [];
     for (final image in images) {
-      final List<dynamic> extensions = jsonDecode(image['extensions']);
+      final List<dynamic> extensions = jsonDecode(image['image_extensions']);
       imageWidgets.add(
         Column(
           children: [
