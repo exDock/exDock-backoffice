@@ -43,7 +43,10 @@ class _FilesSynchronousState extends State<FilesSynchronous> {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        TopBar(path: path),
+        TopBar(
+          path: path,
+          changeAttributeMap: widget.changeAttributeMap,
+        ),
         Padding(
           padding: const EdgeInsets.only(top: 80),
           child: ListView(

@@ -1,11 +1,10 @@
 // Flutter imports:
-import 'package:flutter/material.dart';
-
 // Project imports:
 import 'package:exdock_backoffice/pages/catalog/product/info/id_data/category_list.dart';
 import 'package:exdock_backoffice/pages/catalog/product/info/product_info_card/product_info_card_title.dart';
 import 'package:exdock_backoffice/utils/attributes/generate_attribute.dart';
 import 'package:exdock_backoffice/utils/map_notifier.dart';
+import 'package:flutter/material.dart';
 
 class IdDataBlock extends StatefulWidget {
   const IdDataBlock({
@@ -47,10 +46,15 @@ class _IdDataBlockState extends State<IdDataBlock> {
 
   @override
   Widget build(BuildContext context) {
-    final List<Map<String, dynamic>> categories =
-        widget.block.value['categories'];
-    final List<String> categoryNames = categories.map((element) {
-      return element["category_name"].toString();
+    final List<dynamic> attributes = widget.block.value['attributes'];
+    final Map<String, dynamic> categories = attributes.firstWhere(
+      (element) => element['attribute_id'] == "product_categories",
+      orElse: () => {},
+    );
+    final List<dynamic> categoryNamesDynamic =
+        categories["current_attribute_value"] as List<dynamic>;
+    final List<String> categoryNames = categoryNamesDynamic.map((_element) {
+      return _element as String;
     }).toList();
 
     return ProductInfoCardTitle(
@@ -62,17 +66,22 @@ class _IdDataBlockState extends State<IdDataBlock> {
             shrinkWrap: true,
             itemCount: widget.block.value['attributes'].length,
             itemBuilder: (context, index) {
-              Widget child = GenerateAttribute(
-                attribute: widget.block.value['attributes'][index],
-                changeAttributeMap: widget.changeAttributeMap,
-              );
-              if (index != 0) {
-                child = Padding(
-                  padding: const EdgeInsets.only(top: 24),
-                  child: child,
+              final Map<String, dynamic> currentAttribute =
+                  widget.block.value['attributes'][index];
+              if (currentAttribute['attribute_id'] != "product_categories") {
+                Widget child = GenerateAttribute(
+                  attribute: currentAttribute,
+                  changeAttributeMap: widget.changeAttributeMap,
                 );
+                if (index != 0) {
+                  child = Padding(
+                    padding: const EdgeInsets.only(top: 24),
+                    child: child,
+                  );
+                }
+                return child;
               }
-              return child;
+              return null;
             },
           ),
           Padding(

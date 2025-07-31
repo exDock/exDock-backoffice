@@ -14,6 +14,7 @@ import 'package:jwt_decoder/jwt_decoder.dart';
 Future<HttpData> standardGetRequest(String endpoint) async {
   const FlutterSecureStorage storage = FlutterSecureStorage();
   int statusCode;
+  String? type;
   String responseBody = "";
   String? accessToken = await storage.read(key: "access_token");
   final String? refreshToken = await storage.read(key: "refresh_token");
@@ -44,9 +45,11 @@ Future<HttpData> standardGetRequest(String endpoint) async {
 
     statusCode = response.statusCode;
     responseBody = response.body;
+    type = response.headers['content-type']?.split(';').first;
   } catch (e) {
     throw Exception("Error making GET request: $e");
   }
 
-  return HttpData(statusCode: statusCode, responseBody: responseBody);
+  return HttpData(
+      statusCode: statusCode, responseBody: responseBody, type: type);
 }

@@ -57,58 +57,57 @@ class _FileEntryState extends State<FileEntry> {
       boxColor = Colors.white;
     }
 
-    return InkWell(
-        onHover: (bool isHovered) {
-          setState(() {
-            this.isHovered = isHovered;
-          });
-        },
-        onTap: () {
-          final String originalValue =
-              widget.changeAttributeMap.value["path"] ?? "";
-          final String extensionString = widget.file.extension != "folder"
-              ? ".${widget.file.extension}"
-              : "";
-          String newValue =
-              "$originalValue%2F${widget.file.fileName}$extensionString";
+    return Container(
+      margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+      child: InkWell(
+          onHover: (bool isHovered) {
+            setState(() {
+              this.isHovered = isHovered;
+            });
+          },
+          onTap: () {
+            final String originalValue =
+                widget.changeAttributeMap.value["path"] ?? "";
+            String newValue = "$originalValue%2F${widget.file.fileName}";
 
-          if (originalValue.isEmpty) {
-            newValue = "$originalValue${widget.file.fileName}$extensionString";
-          }
-          widget.changeAttributeMap
-              .updateEntry("path", originalValue, newValue);
-        },
-        child: Container(
-          padding: const EdgeInsets.all(16),
-          decoration: BoxDecoration(
-            color: boxColor,
-            borderRadius: BorderRadius.circular(8),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.grey.withValues(alpha: 0.2),
-                spreadRadius: 1,
-                blurRadius: 5,
-                offset: const Offset(0, 3), // changes position of shadow
-              ),
-            ],
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Row(
-                children: [
-                  fileIcon,
-                  const SizedBox(width: 8),
-                  Text(widget.file.fileName),
-                ],
-              ),
-              if (widget.file.fileSize > 0)
-                Text(
-                  "${widget.file.fileSize} KB",
-                  style: const TextStyle(color: Colors.grey),
+            if (originalValue.isEmpty) {
+              newValue = "$originalValue${widget.file.fileName}";
+            }
+            widget.changeAttributeMap
+                .updateEntry("path", originalValue, newValue);
+          },
+          child: Container(
+            padding: const EdgeInsets.all(16),
+            decoration: BoxDecoration(
+              color: boxColor,
+              borderRadius: BorderRadius.circular(8),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.withValues(alpha: 0.2),
+                  spreadRadius: 1,
+                  blurRadius: 5,
+                  offset: const Offset(0, 3), // changes position of shadow
                 ),
-            ],
-          ),
-        ));
+              ],
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  children: [
+                    fileIcon,
+                    const SizedBox(width: 8),
+                    Text(widget.file.fileName),
+                  ],
+                ),
+                if (widget.file.fileSize > 0)
+                  Text(
+                    "${widget.file.fileSize} KB",
+                    style: const TextStyle(color: Colors.grey),
+                  ),
+              ],
+            ),
+          )),
+    );
   }
 }

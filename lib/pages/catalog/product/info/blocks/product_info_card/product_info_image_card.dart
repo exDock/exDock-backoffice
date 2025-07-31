@@ -1,13 +1,17 @@
 // Dart imports:
 import 'dart:convert';
-
-// Flutter imports:
-import 'package:flutter/material.dart';
+import 'dart:io';
+import 'dart:typed_data';
 
 // Project imports:
 import 'package:exdock_backoffice/globals/styling.dart';
 import 'package:exdock_backoffice/pages/catalog/product/info/product_info_card/product_info_card_title.dart';
+import 'package:exdock_backoffice/utils/HTTP/http_data.dart';
+import 'package:exdock_backoffice/utils/HTTP/post_requests.dart';
 import 'package:exdock_backoffice/utils/map_notifier.dart';
+// Flutter imports:
+import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 class ProductInfoImageCard extends StatefulWidget {
   const ProductInfoImageCard({
@@ -38,18 +42,51 @@ class _ProductInfoImageCardState extends State<ProductInfoImageCard> {
     });
   }
 
+  Future<void> _uploadImage() async {
+    final ImagePicker picker = ImagePicker();
+    final XFile? pickedFile =
+        await picker.pickImage(source: ImageSource.gallery);
+
+    if (pickedFile != null) {
+      try {
+        final String sku = widget.block.value["attributes"][0]
+            ["current_attribute_value"] as String;
+        const String name = "test";
+        final Uint8List imageBytes = await pickedFile.readAsBytes();
+        final String fileName = pickedFile.name;
+        const String baseRequestUrl = "/api/v1/image";
+        final String endpoint =
+            "/api/v1/image/products%2F$sku-$name%2F$fileName";
+        String contentType = pickedFile.mimeType ?? "image/jpeg";
+        if (contentType.isEmpty) {
+          contentType = "image/jpeg"; // Default to JPEG if mime type is empty
+        }
+        final String body = const Base64Encoder().convert(imageBytes);
+        final HttpData uploadRequest = await standardPostRequest(
+          baseRequestUrl,
+          jsonEncode(body),
+          {HttpHeaders.contentTypeHeader: contentType},
+        );
+        final HttpData httpData = await standardPostRequest(
+          endpoint,
+          jsonEncode(body),
+          {HttpHeaders.contentTypeHeader: contentType},
+        );
+      } catch (e) {
+        print('Error uploading image: $e');
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    final List<Map<String, dynamic>> images =
-        widget.block.value['images'].map((image) {
+    final List<dynamic> imagesList = widget.block.value['images'];
+    final List<Map<String, dynamic>> images = imagesList.map((image) {
       return image as Map<String, dynamic>;
     }).toList();
     final List<Widget> imageWidgets = [];
     for (final image in images) {
-      final List<String> extensions =
-          jsonDecode(image['extensions']).map((extension) {
-        return extension as String;
-      }).toList();
+      final List<dynamic> extensions = jsonDecode(image['extensions']);
       imageWidgets.add(
         Column(
           children: [
@@ -83,7 +120,7 @@ class _ProductInfoImageCardState extends State<ProductInfoImageCard> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text(extensions[index]),
+                        Text(extensions[index] as String),
                       ],
                     ),
                   );
@@ -103,7 +140,28 @@ class _ProductInfoImageCardState extends State<ProductInfoImageCard> {
           spacing: 10,
           runSpacing: 5,
           direction: Axis.horizontal,
-          children: imageWidgets,
+          children: [
+            ...imageWidgets,
+            Align(
+              alignment: Alignment.bottomRight,
+              child: GestureDetector(
+                onTap: _uploadImage,
+                child: Container(
+                  padding: const EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    boxShadow: lightKBoxShadowList,
+                    color: Colors.white,
+                  ),
+                  child: const Icon(
+                    Icons.add_a_photo_outlined,
+                    size: 50,
+                    color: Colors.grey,
+                  ),
+                ),
+              ),
+            )
+          ],
         ),
       ),
     );

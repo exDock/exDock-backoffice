@@ -1,9 +1,6 @@
 // Dart imports:
 import 'dart:convert';
 
-// Flutter imports:
-import 'package:flutter/material.dart';
-
 // Project imports:
 import 'package:exdock_backoffice/globals/variables.dart';
 import 'package:exdock_backoffice/pages/system/blocks/generate_system_block.dart';
@@ -11,6 +8,8 @@ import 'package:exdock_backoffice/pages/system/blocks/system_block.dart';
 import 'package:exdock_backoffice/pages/system/top_bar/system_top_bar.dart';
 import 'package:exdock_backoffice/utils/HTTP/post_requests.dart';
 import 'package:exdock_backoffice/utils/map_notifier.dart';
+// Flutter imports:
+import 'package:flutter/material.dart';
 
 class SystemSynchronous extends StatelessWidget {
   const SystemSynchronous({
@@ -25,7 +24,8 @@ class SystemSynchronous extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final MapNotifier changeSettingsMap = MapNotifier();
-    final List<MapEntry<String, dynamic>> blocksEntriesList = blocks.entries.toList();
+    final List<MapEntry<String, dynamic>> blocksEntriesList =
+        blocks.entries.toList();
 
     void saveValues() async {
       Map<String, dynamic> serverRequestMap = {};
@@ -43,6 +43,7 @@ class SystemSynchronous extends StatelessWidget {
           final response = await standardPostRequest(
             "/api/v1/system/setSettings",
             jsonEncode(serverRequestMap),
+            null,
           );
 
           if (response.statusCode == 200) {

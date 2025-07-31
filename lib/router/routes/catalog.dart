@@ -1,13 +1,11 @@
 // Flutter imports:
-import 'package:flutter/material.dart';
-
-// Package imports:
-import 'package:go_router/go_router.dart';
-
 // Project imports:
 import 'package:exdock_backoffice/pages/catalog/category/category.dart';
 import 'package:exdock_backoffice/pages/catalog/product/home/product.dart';
 import 'package:exdock_backoffice/pages/catalog/product/info/product_info.dart';
+import 'package:flutter/material.dart';
+// Package imports:
+import 'package:go_router/go_router.dart';
 
 List<GoRoute> getCatalogRoutes() {
   return [
@@ -38,9 +36,9 @@ List<GoRoute> getCatalogRoutes() {
     GoRoute(
       path: '/catalog/product/:selectedProduct',
       builder: (context, state) {
-        int? productId;
+        String? productId;
         try {
-          productId = int.parse(state.pathParameters['selectedProduct']!);
+          productId = state.pathParameters['selectedProduct'];
         } catch (_) {}
         return ProductInfo(
           productId: productId,
