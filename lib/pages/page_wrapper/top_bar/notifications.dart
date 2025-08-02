@@ -1,14 +1,17 @@
 // Dart imports:
 
+// Flutter imports:
+import 'package:flutter/material.dart';
+
+// Package imports:
+import 'package:material_symbols_icons/material_symbols_icons.dart';
+import 'package:web_socket_channel/web_socket_channel.dart';
+
 // Project imports:
 import 'package:exdock_backoffice/globals/globals.dart';
 import 'package:exdock_backoffice/globals/variables.dart';
 import 'package:exdock_backoffice/utils/HTTP/connect_websocket_stream.dart';
 import 'package:exdock_backoffice/utils/authentication/authentication_data.dart';
-// Flutter imports:
-import 'package:flutter/material.dart';
-// Package imports:
-import 'package:material_symbols_icons/material_symbols_icons.dart';
 
 class Notifications extends StatefulWidget {
   const Notifications({super.key});
@@ -20,6 +23,7 @@ class Notifications extends StatefulWidget {
 class _NotificationsState extends State<Notifications> {
   bool isExpanded = false; // To track whether the list is expanded
   final List<String> _notifications = [];
+  late Future<WebSocketChannel> _channel;
 
   OverlayEntry? _overlayEntry;
   ValueNotifier<List<String>>? _notificationsNotifier;
@@ -37,7 +41,8 @@ class _NotificationsState extends State<Notifications> {
     try {
       final String baseUrl = settings.getSetting("base_url");
       final Uri uri = Uri.parse("$baseUrl/api/v1/ws/error");
-      getWebsocketChannel(uri.convertToWs(), _notificationsNotifier!);
+      _channel =
+          getWebsocketChannel(uri.convertToWs(), _notificationsNotifier!);
     } catch (e) {
       if (e is NotAuthenticatedException) {
         throw NotAuthenticatedException("");
@@ -53,6 +58,7 @@ class _NotificationsState extends State<Notifications> {
   void dispose() {
     _overlayEntry?.remove();
     _notificationsNotifier?.dispose();
+    _channel.then((channel) => channel.sink.close());
     super.dispose();
   }
 

@@ -42,7 +42,6 @@ class _SystemState extends State<System> {
         future: getSystemData(),
         builder: (context, snapshot) {
           if (snapshot.hasError) {
-            print(snapshot.error);
             return const Placeholder();
           }
 

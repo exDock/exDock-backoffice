@@ -28,38 +28,41 @@ class Settings {
         throw Exception("Could not find setting: $key");
       }
     } catch (e) {
-      print(e);
       rethrow;
     }
   }
 
-  Future<void> setSetting<T>(String key, T value) async {
-    switch (T.toString()) {
-      case "String":
-        {
-          await prefs.setString(key, value as String);
-          break;
-        }
-      case "int":
-        {
-          await prefs.setInt(key, value as int);
-          break;
-        }
-      case "double":
-        {
-          await prefs.setDouble(key, value as double);
-          break;
-        }
-      case "bool":
-        {
-          await prefs.setBool(key, value as bool);
-          break;
-        }
-      default:
-        {
-          await prefs.setString(key, jsonEncode(value));
-          break;
-        }
+  void setSetting<T>(String key, T value) {
+    if (settingsMap.containsKey(key)) {
+      settingsMap[key] = value;
+    } else {
+      switch (T.toString()) {
+        case "String":
+          {
+            prefs.setString(key, value as String);
+            break;
+          }
+        case "int":
+          {
+            prefs.setInt(key, value as int);
+            break;
+          }
+        case "double":
+          {
+            prefs.setDouble(key, value as double);
+            break;
+          }
+        case "bool":
+          {
+            prefs.setBool(key, value as bool);
+            break;
+          }
+        default:
+          {
+            prefs.setString(key, jsonEncode(value));
+            break;
+          }
+      }
     }
   }
 

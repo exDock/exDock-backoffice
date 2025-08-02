@@ -1,6 +1,4 @@
-// Flutter imports:
-// Project imports:
-import 'package:exdock_backoffice/pages/catalog/product/info/id_data/category_list.dart';
+// Flutter imports:ck_backoffice/pages/catalog/product/info/id_data/category_list.dart';
 import 'package:exdock_backoffice/pages/catalog/product/info/product_info_card/product_info_card_title.dart';
 import 'package:exdock_backoffice/utils/attributes/generate_attribute.dart';
 import 'package:exdock_backoffice/utils/map_notifier.dart';

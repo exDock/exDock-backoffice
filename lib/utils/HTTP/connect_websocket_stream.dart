@@ -9,12 +9,14 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
 
 // Project imports:
+import 'package:exdock_backoffice/pages/system/top_bar/system_server_status.dart';
 import 'package:exdock_backoffice/utils/HTTP/login_requests.dart';
 import 'package:exdock_backoffice/utils/authentication/authentication_data.dart';
 
 // Project imports:
 
-void getWebsocketChannel(Uri wsUrl, ValueNotifier values) async {
+Future<WebSocketChannel> getWebsocketChannel(
+    Uri wsUrl, ValueNotifier values) async {
   const FlutterSecureStorage storage = FlutterSecureStorage();
   String? accessToken = await storage.read(key: "access_token");
   final String? refreshToken = await storage.read(key: "refresh_token");
@@ -78,6 +80,17 @@ void getWebsocketChannel(Uri wsUrl, ValueNotifier values) async {
             existingValues.add(errorMessage);
             values.value = existingValues;
             break;
+          case "serverStatus":
+            final ServerHealth serverHealth = ServerHealth(
+              serverStatus: fromStringToStatus(data["serverHealth"]),
+              timestamp: data["timeStamp"],
+              processCpuUsage: data["processCpuLoad"],
+              systemCpuUsage: data["systemCpuLoad"],
+              totalMemory: data["totalMemory"],
+              usedMemory: data["usedMemory"],
+            );
+            values.value = serverHealth;
+            break;
         }
       }
     },
@@ -86,6 +99,8 @@ void getWebsocketChannel(Uri wsUrl, ValueNotifier values) async {
     },
     cancelOnError: true,
   );
+
+  return channel;
 }
 
 extension UriExtension on Uri {
@@ -95,5 +110,20 @@ extension UriExtension on Uri {
     } else {
       return replace(scheme: "wss");
     }
+  }
+}
+
+ServerStatus fromStringToStatus(String status) {
+  switch (status) {
+    case "UP":
+      return ServerStatus.up;
+    case "DOWN":
+      return ServerStatus.down;
+    case "MAINTENANCE":
+      return ServerStatus.maintenance;
+    case "RESTARTING":
+      return ServerStatus.restarting;
+    default:
+      throw ArgumentError("Unknown server status: $status");
   }
 }
