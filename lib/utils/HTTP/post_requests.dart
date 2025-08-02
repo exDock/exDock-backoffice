@@ -1,15 +1,16 @@
 // Dart imports:
 import 'dart:io';
 
+// Package imports:
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:http/http.dart' as http;
+import 'package:jwt_decoder/jwt_decoder.dart';
+
 // Project imports:
 import 'package:exdock_backoffice/globals/variables.dart';
 import 'package:exdock_backoffice/utils/HTTP/http_data.dart';
 import 'package:exdock_backoffice/utils/HTTP/login_requests.dart';
 import 'package:exdock_backoffice/utils/authentication/authentication_data.dart';
-// Package imports:
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:http/http.dart' as http;
-import 'package:jwt_decoder/jwt_decoder.dart';
 
 Future<HttpData> standardPostRequest(
   String endpoint,

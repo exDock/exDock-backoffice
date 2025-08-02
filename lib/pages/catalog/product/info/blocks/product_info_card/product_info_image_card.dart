@@ -3,15 +3,18 @@ import 'dart:convert';
 import 'dart:io';
 import 'dart:typed_data';
 
+// Flutter imports:
+import 'package:flutter/material.dart';
+
+// Package imports:
+import 'package:image_picker/image_picker.dart';
+
 // Project imports:
 import 'package:exdock_backoffice/globals/styling.dart';
 import 'package:exdock_backoffice/pages/catalog/product/info/product_info_card/product_info_card_title.dart';
 import 'package:exdock_backoffice/utils/HTTP/http_data.dart';
 import 'package:exdock_backoffice/utils/HTTP/post_requests.dart';
 import 'package:exdock_backoffice/utils/map_notifier.dart';
-// Flutter imports:
-import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
 
 class ProductInfoImageCard extends StatefulWidget {
   const ProductInfoImageCard({

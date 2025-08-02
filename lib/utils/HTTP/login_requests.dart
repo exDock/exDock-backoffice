@@ -1,13 +1,14 @@
 // Dart imports:
 import 'dart:convert';
 
+// Package imports:
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:http/http.dart' as http;
+
 // Project imports:
 import 'package:exdock_backoffice/globals/variables.dart';
 import 'package:exdock_backoffice/utils/HTTP/http_data.dart';
 import 'package:exdock_backoffice/utils/authentication/authentication_data.dart';
-// Package imports:
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:http/http.dart' as http;
 
 Future<HttpData> loginRequest(String email, String password) async {
   const FlutterSecureStorage storage = FlutterSecureStorage();

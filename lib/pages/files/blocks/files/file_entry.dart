@@ -1,7 +1,10 @@
+// Flutter imports:
+import 'package:flutter/material.dart';
+
+// Project imports:
 import 'package:exdock_backoffice/pages/files/blocks/files/files.dart';
 import 'package:exdock_backoffice/router/router.dart';
 import 'package:exdock_backoffice/utils/map_notifier.dart';
-import 'package:flutter/material.dart';
 
 class FileEntry extends StatefulWidget {
   const FileEntry({

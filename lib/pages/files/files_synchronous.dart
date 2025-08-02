@@ -1,7 +1,10 @@
+// Flutter imports:
+import 'package:flutter/material.dart';
+
+// Project imports:
 import 'package:exdock_backoffice/pages/files/blocks/generate_block.dart';
 import 'package:exdock_backoffice/pages/files/top_bar/top_bar.dart';
 import 'package:exdock_backoffice/utils/map_notifier.dart';
-import 'package:flutter/material.dart';
 
 class FilesSynchronous extends StatefulWidget {
   const FilesSynchronous({

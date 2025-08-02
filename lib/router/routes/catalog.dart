@@ -1,11 +1,15 @@
 // Flutter imports:
+
+// Flutter imports:
+import 'package:flutter/material.dart';
+
+// Package imports:
+import 'package:go_router/go_router.dart';
+
 // Project imports:
 import 'package:exdock_backoffice/pages/catalog/category/category.dart';
 import 'package:exdock_backoffice/pages/catalog/product/home/product.dart';
 import 'package:exdock_backoffice/pages/catalog/product/info/product_info.dart';
-import 'package:flutter/material.dart';
-// Package imports:
-import 'package:go_router/go_router.dart';
 
 List<GoRoute> getCatalogRoutes() {
   return [

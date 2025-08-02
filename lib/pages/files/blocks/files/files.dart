@@ -1,12 +1,18 @@
+// Dart imports:
 import 'dart:convert';
 
+// Flutter imports:
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+
+// Package imports:
+import 'package:universal_html/html.dart' as html;
+
+// Project imports:
 import 'package:exdock_backoffice/pages/files/blocks/files/file_entry.dart';
 import 'package:exdock_backoffice/utils/HTTP/get_request.dart';
 import 'package:exdock_backoffice/utils/HTTP/http_data.dart';
 import 'package:exdock_backoffice/utils/map_notifier.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-import 'package:universal_html/html.dart' as html;
 
 class Files extends StatelessWidget {
   const Files({

@@ -1,10 +1,15 @@
 // Flutter imports:
+
+// Flutter imports:
+import 'package:flutter/material.dart';
+
+// Package imports:
+import 'package:flutter_breadcrumb/flutter_breadcrumb.dart';
+
 // Project imports:
 import 'package:exdock_backoffice/globals/globals.dart';
 import 'package:exdock_backoffice/pages/files/top_bar/file_breadcrumb_item.dart';
 import 'package:exdock_backoffice/utils/map_notifier.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_breadcrumb/flutter_breadcrumb.dart';
 
 class TopBar extends StatefulWidget {
   const TopBar({

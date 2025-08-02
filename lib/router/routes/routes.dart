@@ -1,4 +1,11 @@
 // Flutter imports:
+
+// Flutter imports:
+import 'package:flutter/material.dart';
+
+// Package imports:
+import 'package:go_router/go_router.dart';
+
 // Project imports:
 import 'package:exdock_backoffice/router/routes/catalog.dart';
 import 'package:exdock_backoffice/router/routes/content.dart';
@@ -10,9 +17,6 @@ import 'package:exdock_backoffice/router/routes/reports.dart';
 import 'package:exdock_backoffice/router/routes/sales.dart';
 import 'package:exdock_backoffice/router/routes/stores.dart';
 import 'package:exdock_backoffice/router/routes/system.dart';
-import 'package:flutter/material.dart';
-// Package imports:
-import 'package:go_router/go_router.dart';
 
 List<GoRoute> getRoutes() {
   return [

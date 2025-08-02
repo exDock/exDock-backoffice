@@ -1,13 +1,17 @@
 // Flutter imports:
+
+// Flutter imports:
+import 'package:flutter/material.dart';
+
+// Package imports:
+import 'package:http/http.dart';
+import 'package:kumi_popup_window/kumi_popup_window.dart';
+
 // Project imports:
 import 'package:exdock_backoffice/globals/variables.dart';
 import 'package:exdock_backoffice/widgets/buttons/exdock_button.dart';
 import 'package:exdock_backoffice/widgets/input/exdock_text_field.dart';
 import 'package:exdock_backoffice/widgets/popup/exdock_big_popup.dart';
-import 'package:flutter/material.dart';
-// Package imports:
-import 'package:http/http.dart';
-import 'package:kumi_popup_window/kumi_popup_window.dart';
 
 class LoginSettings extends StatefulWidget {
   const LoginSettings({super.key});
