@@ -1,4 +1,5 @@
 // Flutter imports:
+import 'package:exdock_backoffice/pages/catalog/product/home/widgets/products_overview.dart';
 import 'package:flutter/material.dart';
 
 // Package imports:
@@ -17,7 +18,8 @@ List<GoRoute> getCatalogRoutes() {
     ),
     GoRoute(
       path: '/catalog/product',
-      builder: (context, state) => const Product(),
+      // builder: (context, state) => const Product(),
+      builder: (context, state) => const ProductsOverview(),
     ),
     GoRoute(
       path: '/catalog/category',

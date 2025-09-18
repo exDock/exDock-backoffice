@@ -2,6 +2,8 @@
 import 'dart:math';
 
 // Flutter imports:
+import 'package:exdock_backoffice/utils/HTTP/get_request.dart';
+import 'package:exdock_backoffice/utils/HTTP/http_data.dart';
 import 'package:flutter/material.dart';
 
 // Project imports:
@@ -22,6 +24,11 @@ class Product extends StatelessWidget {
           name: getRandomString(30),
           price: random.nextDouble() * 100));
     }
+
+    final HttpData response =
+        await standardGetRequest('/api/v1/products/overview');
+    print("response.responseBody: ${response.responseBody}");
+
     return ProductData(products: products);
   }
 

@@ -14,6 +14,7 @@ class ProductsOverviewSync extends StatefulWidget {
     super.key,
     required this.allIds,
     required this.columns,
+    required this.visibleColumns,
     required this.getPages,
     required this.bulkActions,
     required this.filters,
@@ -22,6 +23,7 @@ class ProductsOverviewSync extends StatefulWidget {
   });
 
   final List<OverviewPageColumnData> columns;
+  final VisibleColumnsNotifier visibleColumns;
   final Set<String> allIds;
   final RetrieveOverviewPagePages getPages;
   final List<BulkAction> bulkActions;
@@ -35,15 +37,12 @@ class ProductsOverviewSync extends StatefulWidget {
 
 class _ProductsOverviewSyncState extends State<ProductsOverviewSync> {
   late final selectedIds = IdSetNotifier(widget.allIds);
-  late final visibleColumns = VisibleColumnsNotifier(
-    visibleColumns: widget.columns, // TODO: save visible columns state
-  );
 
   @override
   Widget build(BuildContext context) {
     return OverviewPage(
       columns: widget.columns,
-      visibleColumns: visibleColumns,
+      visibleColumns: widget.visibleColumns,
       getPages: widget.getPages,
       bulkActions: widget.bulkActions,
       filters: widget.filters,

@@ -78,7 +78,12 @@ class _OverviewPageRowState extends State<OverviewPageRow> {
                   onChanged: (value) {
                     value ??= false;
                     if (value) {
-                      widget.selectedIds.addId(widget.id);
+                      try {
+                        widget.selectedIds.addId(widget.id);
+                      } catch (_) {
+                        print(
+                            "widget.selectedIds.allIds: ${widget.selectedIds.allIds}");
+                      }
                     } else {
                       widget.selectedIds.removeId(widget.id);
                     }
