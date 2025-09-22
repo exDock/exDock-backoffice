@@ -9,7 +9,7 @@ import 'package:exdock_backoffice/widgets/overview_page/content/columns/overview
 import 'package:exdock_backoffice/widgets/overview_page/content/row/overview_page_row.dart';
 import 'package:exdock_backoffice/widgets/overview_page/content/row/retrieve_overview_page_pages.dart';
 import 'package:exdock_backoffice/widgets/overview_page/filters/filter_notifier.dart';
-import 'package:exdock_backoffice/widgets/overview_page/visible_columns_selection/visible_columns_notifier.dart';
+import 'package:exdock_backoffice/widgets/overview_page/visible_columns_selection/columns_notifier.dart';
 import 'package:exdock_backoffice/widgets/pagination/page_notifier.dart';
 import 'package:flutter/material.dart';
 
@@ -30,7 +30,7 @@ class _ProductsOverviewState extends State<ProductsOverview> {
     OverviewPageColumnData(columnKey: 'TODO', name: "TODO column"),
   ]; // TODO: Retrieve columns from backend
   late final RetrieveOverviewPagePages getPages;
-  late final visibleColumns = VisibleColumnsNotifier(
+  late final visibleColumns = ColumnsNotifier(
     visibleColumns: columns, // TODO: save visible columns state
   );
 

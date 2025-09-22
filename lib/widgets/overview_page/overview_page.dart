@@ -11,7 +11,7 @@ import 'package:exdock_backoffice/widgets/overview_page/filters/active_filters.d
 import 'package:exdock_backoffice/widgets/overview_page/filters/filter_notifier.dart';
 import 'package:exdock_backoffice/widgets/overview_page/filters/filter_setup/filter_setup.dart';
 import 'package:exdock_backoffice/widgets/overview_page/overview_page_header.dart';
-import 'package:exdock_backoffice/widgets/overview_page/visible_columns_selection/visible_columns_notifier.dart';
+import 'package:exdock_backoffice/widgets/overview_page/visible_columns_selection/columns_notifier.dart';
 import 'package:exdock_backoffice/widgets/pagination/page_notifier.dart';
 
 class OverviewPage extends StatefulWidget {
@@ -30,7 +30,7 @@ class OverviewPage extends StatefulWidget {
   });
 
   final List<OverviewPageColumnData> columns;
-  final VisibleColumnsNotifier visibleColumns;
+  final ColumnsNotifier visibleColumns;
   final RetrieveOverviewPagePages getPages;
   final List<BulkAction> bulkActions;
   final FilterNotifier filters;
