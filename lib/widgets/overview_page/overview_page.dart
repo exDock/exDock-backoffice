@@ -29,7 +29,7 @@ class OverviewPage extends StatefulWidget {
     this.getFilters,
   });
 
-  final List<OverviewPageColumnData> columns;
+  final ColumnsNotifier columns;
   final ColumnsNotifier visibleColumns;
   final RetrieveOverviewPagePages getPages;
   final List<BulkAction> bulkActions;
@@ -49,7 +49,7 @@ class _OverviewPageState extends State<OverviewPage> {
   void initState() {
     super.initState();
 
-    for (final OverviewPageColumnData column in widget.columns) {
+    for (final OverviewPageColumnData column in widget.columns.value) {
       if (!widget.visibleColumns.containsColumn(column)) {
         widget.visibleColumns.addColumn(column);
       }

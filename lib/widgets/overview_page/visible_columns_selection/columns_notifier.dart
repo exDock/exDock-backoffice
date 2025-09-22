@@ -6,8 +6,8 @@ import 'package:exdock_backoffice/widgets/overview_page/content/columns/overview
 
 class ColumnsNotifier extends ValueNotifier<List<OverviewPageColumnData>> {
   ColumnsNotifier({
-    required List<OverviewPageColumnData> visibleColumns,
-  }) : super(visibleColumns);
+    required List<OverviewPageColumnData> columns,
+  }) : super(columns);
   bool isChanged = false;
 
   bool containsColumn(OverviewPageColumnData column) {

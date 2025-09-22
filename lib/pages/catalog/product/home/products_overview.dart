@@ -26,43 +26,61 @@ class _ProductsOverviewState extends State<ProductsOverview> {
   final filters = FilterNotifier();
   final pageNotifier = PageNotifier();
   final List<BulkAction> bulkActions = [];
-  final List<OverviewPageColumnData> columns = [
-    OverviewPageColumnData(columnKey: 'TODO', name: "TODO column"),
-  ]; // TODO: Retrieve columns from backend
+  final columns = ColumnsNotifier(
+    columns: [],
+  ); // TODO: cache columns
+  // final List<OverviewPageColumnData> columns = [
+  //   OverviewPageColumnData(columnKey: 'TODO', name: "TODO column"),
+  // ]; // TODO: Retrieve columns from backend
   late final RetrieveOverviewPagePages getPages;
   late final visibleColumns = ColumnsNotifier(
-    visibleColumns: columns, // TODO: save visible columns state
+    columns: [], // TODO: save visible columns state
   );
 
   Future<List<OverviewPageRow>> getRows(
     FilterNotifier filters,
-    List<OverviewPageColumnData>? columns,
+    ColumnsNotifier columns,
     Set<String> allIds,
     IdSetNotifier selectedIds,
     PageNotifier pageNotifier,
+    bool updateColumns,
   ) async {
-    final HttpData response =
-        await standardGetRequest('/api/v1/products/overview');
+    final HttpData response = await standardGetRequest(
+        '/api/v1/products/overview${updateColumns ? '?columns=1' : ''}');
 
     if (response.statusCode != 200 || response.responseBody == null) {
       return [];
     }
 
-    final jsonList = jsonDecode(response.responseBody!) as List;
+    final jsonMap = Map<String, List>.from(jsonDecode(response.responseBody!));
+    final products = jsonMap['products']!;
     final List<OverviewPageRow> rows = [];
 
-    for (final json in jsonList) {
+    for (final json in products) {
       final id = json["_id"];
       allIds.add(id);
       print("allIds: $allIds");
 
+      if (updateColumns) {
+        final jsonColumns = jsonMap['columns'] as List;
+        final List<OverviewPageColumnData> newColumns = [];
+
+        for (final jsonColumn in jsonColumns) {
+          newColumns.add(OverviewPageColumnData(
+            columnKey: jsonColumn['key'],
+            name: jsonColumn['name'],
+          ));
+        }
+
+        columns.value = newColumns;
+      }
+
       print("json: $json");
-      // continue;
       rows.add(OverviewPageRow(
         id: id,
         name: json['name'],
         visibleColumns: visibleColumns,
-        columnValues: {"TODO": "todo"},
+        columnValues: json,
         allIds: allIds,
         selectedIds: selectedIds,
       ));
@@ -82,6 +100,7 @@ class _ProductsOverviewState extends State<ProductsOverview> {
       allIds: allIds,
       selectedIds: selectedIds,
       pageNotifier: pageNotifier,
+      columns: columns,
     );
     super.initState();
   }

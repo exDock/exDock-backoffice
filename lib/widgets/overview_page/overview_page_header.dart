@@ -11,7 +11,6 @@ import 'package:exdock_backoffice/widgets/buttons/exdock_button.dart';
 import 'package:exdock_backoffice/widgets/input/exdock_search_bar.dart';
 import 'package:exdock_backoffice/widgets/overview_page/bulk/bulk_action.dart';
 import 'package:exdock_backoffice/widgets/overview_page/bulk/bulk_actions_button.dart';
-import 'package:exdock_backoffice/widgets/overview_page/content/columns/overview_page_column.dart';
 import 'package:exdock_backoffice/widgets/overview_page/filters/filter_notifier.dart';
 import 'package:exdock_backoffice/widgets/overview_page/filters/filter_setup/filter_setup.dart';
 import 'package:exdock_backoffice/widgets/overview_page/filters/popup/filters_popup.dart';
@@ -31,7 +30,7 @@ class OverviewPageHeader extends StatefulWidget {
     this.getFilters,
   });
 
-  final List<OverviewPageColumnData> columns;
+  final ColumnsNotifier columns;
   final ColumnsNotifier visibleColumns;
   final List<BulkAction> bulkActions;
   final FilterNotifier filters;

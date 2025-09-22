@@ -1,6 +1,5 @@
 import 'package:exdock_backoffice/utils/id_set_notifier.dart';
 import 'package:exdock_backoffice/widgets/overview_page/bulk/bulk_action.dart';
-import 'package:exdock_backoffice/widgets/overview_page/content/columns/overview_page_column.dart';
 import 'package:exdock_backoffice/widgets/overview_page/content/row/retrieve_overview_page_pages.dart';
 import 'package:exdock_backoffice/widgets/overview_page/filters/filter_notifier.dart';
 import 'package:exdock_backoffice/widgets/overview_page/filters/filter_setup/filter_setup.dart';
@@ -22,7 +21,7 @@ class ProductsOverviewSync extends StatefulWidget {
     this.getFilters,
   });
 
-  final List<OverviewPageColumnData> columns;
+  final ColumnsNotifier columns;
   final ColumnsNotifier visibleColumns;
   final Set<String> allIds;
   final RetrieveOverviewPagePages getPages;

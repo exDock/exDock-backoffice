@@ -13,7 +13,7 @@ class VisibleColumnsSelection extends StatelessWidget {
     required this.visibleColumns,
   });
 
-  final List<OverviewPageColumnData> columns;
+  final ColumnsNotifier columns;
   final ColumnsNotifier visibleColumns;
 
   @override
@@ -32,9 +32,9 @@ class VisibleColumnsSelection extends StatelessWidget {
             mainAxisSpacing: 8,
             crossAxisSpacing: 8,
             childAspectRatio: 16 / 6,
-            children: List<Widget>.generate(columns.length, (index) {
+            children: List<Widget>.generate(columns.value.length, (index) {
               return VisibleColumnSelection(
-                column: columns[index],
+                column: columns.value[index],
                 visibleColumns: visibleColumns,
                 onToggle: (OverviewPageColumnData column, bool isVisible) {
                   if (isVisible) {

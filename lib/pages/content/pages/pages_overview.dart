@@ -24,7 +24,7 @@ class PagesOverview extends StatefulWidget {
 }
 
 class _PagesOverviewState extends State<PagesOverview> {
-  final ColumnsNotifier visibleColumns = ColumnsNotifier(visibleColumns: []);
+  final ColumnsNotifier visibleColumns = ColumnsNotifier(columns: []);
   Set<String> allIds = {};
   late IdSetNotifier selectedIds = IdSetNotifier(allIds);
 
@@ -39,17 +39,19 @@ class _PagesOverviewState extends State<PagesOverview> {
 
   Future<List<OverviewPageRow>> Function(
     FilterNotifier filters,
-    List<OverviewPageColumnData>? columns,
+    ColumnsNotifier columns,
     Set<String> allIds,
     IdSetNotifier selectedIds,
     PageNotifier pageNotifier,
+    bool updateColumns,
   ) getPagesRows() {
     Future<List<OverviewPageRow>> getRows(
       FilterNotifier filters,
-      List<OverviewPageColumnData>? columns,
+      ColumnsNotifier columns,
       Set<String> allIds,
       IdSetNotifier selectedIds,
       PageNotifier pageNotifier,
+      bool updateColumns,
     ) async {
       pageNotifier.maxPage = 1;
       if (pageNotifier.value == 0) {
@@ -280,10 +282,11 @@ class _PagesOverviewState extends State<PagesOverview> {
         List<OverviewPageColumnData>,
         Future<List<OverviewPageRow>> Function(
           FilterNotifier filters,
-          List<OverviewPageColumnData>? columns,
+          ColumnsNotifier columns,
           Set<String> allIds,
           IdSetNotifier selectedIds,
           PageNotifier pageNotifier,
+          bool updateColumns,
         )
       )> getPagesOverviewData() async {
     return (await getPagesColumns(), getPagesRows());
@@ -320,10 +323,11 @@ class _PagesOverviewState extends State<PagesOverview> {
     return FutureBuilder(
       future: getPagesOverviewData(),
       builder: (context, snapshot) {
+        final columns = ColumnsNotifier(columns: snapshot.data!.$1);
         if (snapshot.connectionState == ConnectionState.done &&
             !snapshot.hasError) {
           return OverviewPage(
-            columns: snapshot.data!.$1,
+            columns: columns,
             visibleColumns: visibleColumns,
             filters: filters,
             pageNotifier: pageNotifier,
@@ -333,6 +337,7 @@ class _PagesOverviewState extends State<PagesOverview> {
               allIds: allIds,
               selectedIds: selectedIds,
               pageNotifier: pageNotifier,
+              columns: columns,
             ),
             individualName: "page",
             allIds: allIds,
