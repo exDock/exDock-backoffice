@@ -38,12 +38,8 @@ List<GoRoute> getCatalogRoutes() {
     GoRoute(
       path: '/catalog/product/:selectedProduct',
       builder: (context, state) {
-        int? productId;
-        try {
-          productId = int.parse(state.pathParameters['selectedProduct']!);
-        } catch (_) {}
         return ProductInfo(
-          productId: productId,
+          productId: state.pathParameters['selectedProduct']!,
         );
       },
     ),
