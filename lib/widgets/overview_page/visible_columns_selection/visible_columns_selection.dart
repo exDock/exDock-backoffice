@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 
 // Project imports:
 import 'package:exdock_backoffice/widgets/overview_page/content/columns/overview_page_column.dart';
-import 'package:exdock_backoffice/widgets/overview_page/visible_columns_selection/visible_column_selection.dart';
 import 'package:exdock_backoffice/widgets/overview_page/visible_columns_selection/columns_notifier.dart';
+import 'package:exdock_backoffice/widgets/overview_page/visible_columns_selection/visible_column_selection.dart';
 
 class VisibleColumnsSelection extends StatelessWidget {
   const VisibleColumnsSelection({

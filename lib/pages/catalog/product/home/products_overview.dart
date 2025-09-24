@@ -1,5 +1,13 @@
+// Dart imports:
 import 'dart:convert';
 
+// Flutter imports:
+import 'package:flutter/material.dart';
+
+// Package imports:
+import 'package:go_router/go_router.dart';
+
+// Project imports:
 import 'package:exdock_backoffice/pages/catalog/product/home/products_overview_sync.dart';
 import 'package:exdock_backoffice/utils/HTTP/get_request.dart';
 import 'package:exdock_backoffice/utils/HTTP/http_data.dart';
@@ -12,8 +20,6 @@ import 'package:exdock_backoffice/widgets/overview_page/filters/filter_notifier.
 import 'package:exdock_backoffice/widgets/overview_page/filters/filter_setup/filter_setup.dart';
 import 'package:exdock_backoffice/widgets/overview_page/visible_columns_selection/columns_notifier.dart';
 import 'package:exdock_backoffice/widgets/pagination/page_notifier.dart';
-import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
 class ProductsOverview extends StatefulWidget {
   const ProductsOverview({super.key});
