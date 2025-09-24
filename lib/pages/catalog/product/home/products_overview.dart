@@ -12,6 +12,7 @@ import 'package:exdock_backoffice/widgets/overview_page/filters/filter_notifier.
 import 'package:exdock_backoffice/widgets/overview_page/visible_columns_selection/columns_notifier.dart';
 import 'package:exdock_backoffice/widgets/pagination/page_notifier.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class ProductsOverview extends StatefulWidget {
   const ProductsOverview({super.key});
@@ -83,6 +84,9 @@ class _ProductsOverviewState extends State<ProductsOverview> {
         columnValues: json,
         allIds: allIds,
         selectedIds: selectedIds,
+        onSelect: () {
+          context.push('/catalog/product/$id');
+        },
       ));
 
       selectedIds.allIds = allIds;
