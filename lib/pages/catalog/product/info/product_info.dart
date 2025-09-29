@@ -13,17 +13,17 @@ import 'package:exdock_backoffice/utils/map_notifier.dart';
 class ProductInfo extends StatefulWidget {
   const ProductInfo({
     super.key,
-    this.productId,
+    required this.productId,
   });
 
-  final int? productId;
+  final String productId;
 
   @override
   State<ProductInfo> createState() => _ProductInfoState();
 }
 
 class _ProductInfoState extends State<ProductInfo> {
-  Future<Map<String, dynamic>> getJsonProductData(int productId) async {
+  Future<Map<String, dynamic>> getJsonProductData(String productId) async {
     final HttpData httpData = await standardPostRequest(
       "/api/v1/getBlockData",
       jsonEncode(
@@ -40,7 +40,7 @@ class _ProductInfoState extends State<ProductInfo> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      future: getJsonProductData(widget.productId!),
+      future: getJsonProductData(widget.productId),
       builder: (context, snapshot) {
         if (snapshot.hasError) {
           return const Placeholder();

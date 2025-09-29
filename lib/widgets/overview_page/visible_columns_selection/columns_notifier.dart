@@ -4,11 +4,10 @@ import 'package:flutter/material.dart';
 // Project imports:
 import 'package:exdock_backoffice/widgets/overview_page/content/columns/overview_page_column.dart';
 
-class VisibleColumnsNotifier
-    extends ValueNotifier<List<OverviewPageColumnData>> {
-  VisibleColumnsNotifier({
-    required List<OverviewPageColumnData> visibleColumns,
-  }) : super(visibleColumns);
+class ColumnsNotifier extends ValueNotifier<List<OverviewPageColumnData>> {
+  ColumnsNotifier({
+    required List<OverviewPageColumnData> columns,
+  }) : super(columns);
   bool isChanged = false;
 
   bool containsColumn(OverviewPageColumnData column) {
