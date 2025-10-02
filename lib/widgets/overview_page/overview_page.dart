@@ -1,6 +1,4 @@
 // Flutter imports:
-import 'package:flutter/material.dart';
-
 // Project imports:
 import 'package:exdock_backoffice/utils/id_set_notifier.dart';
 import 'package:exdock_backoffice/widgets/overview_page/bulk/bulk_action.dart';
@@ -13,6 +11,7 @@ import 'package:exdock_backoffice/widgets/overview_page/filters/filter_setup/fil
 import 'package:exdock_backoffice/widgets/overview_page/overview_page_header.dart';
 import 'package:exdock_backoffice/widgets/overview_page/visible_columns_selection/visible_columns_notifier.dart';
 import 'package:exdock_backoffice/widgets/pagination/page_notifier.dart';
+import 'package:flutter/material.dart';
 
 class OverviewPage extends StatefulWidget {
   const OverviewPage({
@@ -27,6 +26,7 @@ class OverviewPage extends StatefulWidget {
     required this.selectedIds,
     required this.pageNotifier,
     this.getFilters,
+    this.newUrl,
   });
 
   final List<OverviewPageColumnData> columns;
@@ -39,6 +39,7 @@ class OverviewPage extends StatefulWidget {
   final IdSetNotifier selectedIds;
   final PageNotifier pageNotifier;
   final Future<List<FilterSetupData>> Function()? getFilters;
+  final String? newUrl;
 
   @override
   State<OverviewPage> createState() => _OverviewPageState();
@@ -68,6 +69,7 @@ class _OverviewPageState extends State<OverviewPage> {
           selectedIds: widget.selectedIds,
           individualName: widget.individualName,
           getFilters: widget.getFilters,
+          newUrl: widget.newUrl,
         ),
         Padding(
           padding: const EdgeInsets.only(top: 124, left: 24, right: 24),
