@@ -42,7 +42,7 @@ dependencies:
   flutter_switch: ^0.3.2
   hoverable_navigation_rail: ^1.0.0
   dotted_decoration: ^2.0.0
-  fleather: ^1.20.1
+  fleather: ^1.24.0+1
   parchment_to_html: ^1.0.0+1
   collection: ^1.19.0
   kumi_popup_window: ^2.0.1
@@ -55,6 +55,10 @@ dependencies:
   jwt_decoder: ^2.0.1
   dropdown_button2: ^2.3.9
   intl: ^0.20.2
+  flutter_html: ^3.0.0
+  flutter_code_editor: ^0.3.5
+  flutter_highlight: ^0.7.0
+  highlight: ^0.7.0
 
 dev_dependencies:
   flutter_test:
