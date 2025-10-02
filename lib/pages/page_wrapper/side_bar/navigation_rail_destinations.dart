@@ -1,14 +1,12 @@
 // Flutter imports:
-import 'package:flutter/material.dart';
-
-// Package imports:
-import 'package:hoverable_navigation_rail/hoverable_navigation_rail_destination.dart';
-import 'package:material_symbols_icons/material_symbols_icons.dart';
-
 // Project imports:
 import 'package:exdock_backoffice/pages/page_wrapper/side_bar/side_bar_hover_menu.dart';
 import 'package:exdock_backoffice/pages/page_wrapper/side_bar/side_bar_hover_menu_data.dart';
 import 'package:exdock_backoffice/pages/page_wrapper/side_bar/simple_hover_menu_button.dart';
+import 'package:flutter/material.dart';
+// Package imports:
+import 'package:hoverable_navigation_rail/hoverable_navigation_rail_destination.dart';
+import 'package:material_symbols_icons/material_symbols_icons.dart';
 
 Map<String, HoverableNavigationRailDestination> navigationRailDestinations(
   BuildContext context,
@@ -95,6 +93,10 @@ Map<String, HoverableNavigationRailDestination> navigationRailDestinations(
               const SimpleHoverMenuButton(
                 route: "/content/pages",
                 buttonText: "pages",
+              ),
+              const SimpleHoverMenuButton(
+                route: "/content/templates",
+                buttonText: "templates",
               ),
             ],
           ),
