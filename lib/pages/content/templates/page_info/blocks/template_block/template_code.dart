@@ -1,4 +1,4 @@
-import 'package:exdock_backoffice/pages/content/pages/page_info/blocks/template_card/template_card_title.dart';
+import 'package:exdock_backoffice/pages/content/templates/page_info/blocks/template_card/template_card_title.dart';
 import 'package:exdock_backoffice/utils/map_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_code_editor/flutter_code_editor.dart';
