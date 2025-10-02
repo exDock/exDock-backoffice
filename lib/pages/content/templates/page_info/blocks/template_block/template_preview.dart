@@ -1,12 +1,14 @@
 import 'dart:convert';
 
-import 'package:exdock_backoffice/pages/content/pages/page_info/blocks/template_card/template_card_title.dart';
+import 'package:exdock_backoffice/pages/content/templates/page_info/blocks/template_card/template_card_title.dart';
 import 'package:exdock_backoffice/utils/HTTP/http_data.dart';
 import 'package:exdock_backoffice/utils/HTTP/post_requests.dart';
 import 'package:exdock_backoffice/utils/map_notifier.dart';
 import 'package:exdock_backoffice/widgets/buttons/exdock_button.dart';
+import 'package:exdock_backoffice/widgets/popup/exdock_big_popup.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
+import 'package:kumi_popup_window/kumi_popup_window.dart';
 
 class TemplatePreview extends StatefulWidget {
   const TemplatePreview({
@@ -34,9 +36,14 @@ class _TemplatePreviewState extends State<TemplatePreview> {
       "Transaction ID",
       "Block Name"
     ];
-    final Map<String, dynamic> body = {
-      "templateData": widget.changeAttributeMap.value["template_data"] ?? "",
-    };
+    final Map<String, dynamic> body = {};
+
+    if (widget.changeAttributeMap.value["template_data"] == null) {
+      body["templateData"] =
+          widget.data.value["attributes"][0]["current_attribute_value"] ?? "";
+    } else {
+      body["templateData"] = widget.changeAttributeMap.value["template_data"];
+    }
 
     for (final id in ids) {
       if (widget.changeAttributeMap.value.containsKey(id)) {
@@ -83,7 +90,9 @@ class _TemplatePreviewState extends State<TemplatePreview> {
                 child: Center(
                   child: Text(
                     "Error generating preview.\nPlease check your template syntax and IDs.",
-                    style: TextStyle(color: Colors.red[700]),
+                    style: TextStyle(
+                      color: Colors.red[700],
+                    ),
                   ),
                 ),
               ),
@@ -96,6 +105,31 @@ class _TemplatePreviewState extends State<TemplatePreview> {
                 setState(() {});
               },
             ),
+            middleButton: ExdockButton(
+              label: "View fullscreen",
+              onPressed: () {
+                showPopupWindow(
+                  context,
+                  childFun: (pop) {
+                    return ExdockBigPopup(
+                      key: GlobalKey(),
+                      pop: pop,
+                      title: "Page preview",
+                      child: SingleChildScrollView(
+                        child: Container(
+                          padding: const EdgeInsets.all(16.0),
+                          color: Colors.grey[200],
+                          child: Html(
+                            shrinkWrap: true,
+                            data: snapshot.data ?? "",
+                          ),
+                        ),
+                      ),
+                    );
+                  },
+                );
+              },
+            ),
             title: "Preview",
             child: SizedBox(
               height: MediaQuery.of(context).size.height - 120,
@@ -104,6 +138,7 @@ class _TemplatePreviewState extends State<TemplatePreview> {
                   padding: const EdgeInsets.all(16.0),
                   color: Colors.grey[200],
                   child: Html(
+                    shrinkWrap: true,
                     data: snapshot.data ?? "",
                   ),
                 ),
