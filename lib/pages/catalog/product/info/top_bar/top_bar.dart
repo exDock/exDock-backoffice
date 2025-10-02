@@ -1,10 +1,13 @@
 // Flutter imports:
+
+// Flutter imports:
+import 'package:flutter/material.dart';
+
 // Project imports:
 import 'package:exdock_backoffice/globals/globals.dart';
 import 'package:exdock_backoffice/utils/map_notifier.dart';
 import 'package:exdock_backoffice/widgets/buttons/exdock_save_button.dart';
 import 'package:exdock_backoffice/widgets/exdock_switch.dart';
-import 'package:flutter/material.dart';
 
 class TopBar extends StatefulWidget {
   const TopBar({

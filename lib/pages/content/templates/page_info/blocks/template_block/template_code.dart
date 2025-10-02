@@ -1,9 +1,14 @@
-import 'package:exdock_backoffice/pages/content/templates/page_info/blocks/template_card/template_card_title.dart';
-import 'package:exdock_backoffice/utils/map_notifier.dart';
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:flutter_code_editor/flutter_code_editor.dart';
 import 'package:flutter_highlight/themes/atom-one-light.dart';
 import 'package:highlight/languages/htmlbars.dart';
+
+// Project imports:
+import 'package:exdock_backoffice/pages/content/templates/page_info/blocks/template_card/template_card_title.dart';
+import 'package:exdock_backoffice/utils/map_notifier.dart';
 
 class TemplateCode extends StatefulWidget {
   const TemplateCode({

@@ -1,6 +1,9 @@
+// Flutter imports:
+import 'package:flutter/material.dart';
+
+// Project imports:
 import 'package:exdock_backoffice/pages/content/templates/page_info/blocks/template_block/template_code.dart';
 import 'package:exdock_backoffice/pages/content/templates/page_info/blocks/template_block/template_preview.dart';
-import 'package:flutter/material.dart';
 
 class Template extends StatelessWidget {
   const Template({

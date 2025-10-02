@@ -1,11 +1,15 @@
 // Flutter imports:
+
+// Flutter imports:
+import 'package:flutter/material.dart';
+
+// Package imports:
+import 'package:go_router/go_router.dart';
+
 // Project imports:
 import 'package:exdock_backoffice/pages/content/pages/pages_overview.dart';
 import 'package:exdock_backoffice/pages/content/templates/page_info/page_info.dart';
 import 'package:exdock_backoffice/pages/content/templates/templates_overview.dart';
-import 'package:flutter/material.dart';
-// Package imports:
-import 'package:go_router/go_router.dart';
 
 List<GoRoute> getContentRoutes() {
   return [

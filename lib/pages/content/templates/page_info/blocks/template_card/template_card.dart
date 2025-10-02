@@ -1,7 +1,10 @@
 // Flutter imports:
+
+// Flutter imports:
+import 'package:flutter/material.dart';
+
 // Project imports:
 import 'package:exdock_backoffice/globals/globals.dart';
-import 'package:flutter/material.dart';
 
 class TemplateCard extends StatelessWidget {
   const TemplateCard({

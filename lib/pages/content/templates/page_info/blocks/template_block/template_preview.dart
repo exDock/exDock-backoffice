@@ -1,14 +1,20 @@
+// Dart imports:
 import 'dart:convert';
 
+// Flutter imports:
+import 'package:flutter/material.dart';
+
+// Package imports:
+import 'package:flutter_html/flutter_html.dart';
+import 'package:kumi_popup_window/kumi_popup_window.dart';
+
+// Project imports:
 import 'package:exdock_backoffice/pages/content/templates/page_info/blocks/template_card/template_card_title.dart';
 import 'package:exdock_backoffice/utils/HTTP/http_data.dart';
 import 'package:exdock_backoffice/utils/HTTP/post_requests.dart';
 import 'package:exdock_backoffice/utils/map_notifier.dart';
 import 'package:exdock_backoffice/widgets/buttons/exdock_button.dart';
 import 'package:exdock_backoffice/widgets/popup/exdock_big_popup.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_html/flutter_html.dart';
-import 'package:kumi_popup_window/kumi_popup_window.dart';
 
 class TemplatePreview extends StatefulWidget {
   const TemplatePreview({
