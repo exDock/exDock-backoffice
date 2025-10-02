@@ -7,12 +7,11 @@ import 'package:exdock_backoffice/widgets/buttons/exdock_button.dart';
 import 'package:exdock_backoffice/widgets/input/exdock_search_bar.dart';
 import 'package:exdock_backoffice/widgets/overview_page/bulk/bulk_action.dart';
 import 'package:exdock_backoffice/widgets/overview_page/bulk/bulk_actions_button.dart';
-import 'package:exdock_backoffice/widgets/overview_page/content/columns/overview_page_column.dart';
 import 'package:exdock_backoffice/widgets/overview_page/filters/filter_notifier.dart';
 import 'package:exdock_backoffice/widgets/overview_page/filters/filter_setup/filter_setup.dart';
 import 'package:exdock_backoffice/widgets/overview_page/filters/popup/filters_popup.dart';
 import 'package:exdock_backoffice/widgets/overview_page/filters/types/string_filter.dart';
-import 'package:exdock_backoffice/widgets/overview_page/visible_columns_selection/visible_columns_notifier.dart';
+import 'package:exdock_backoffice/widgets/overview_page/visible_columns_selection/columns_notifier.dart';
 import 'package:exdock_backoffice/widgets/overview_page/visible_columns_selection/visible_columns_selection.dart';
 import 'package:flutter/material.dart';
 // Package imports:
@@ -31,8 +30,8 @@ class OverviewPageHeader extends StatefulWidget {
     this.newUrl,
   });
 
-  final List<OverviewPageColumnData> columns;
-  final VisibleColumnsNotifier visibleColumns;
+  final ColumnsNotifier columns;
+  final ColumnsNotifier visibleColumns;
   final List<BulkAction> bulkActions;
   final FilterNotifier filters;
   final IdSetNotifier selectedIds;

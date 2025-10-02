@@ -7,7 +7,7 @@ import 'package:exdock_backoffice/utils/id_set_notifier.dart';
 import 'package:exdock_backoffice/widgets/overview_page/content/columns/overview_page_column.dart';
 import 'package:exdock_backoffice/widgets/overview_page/content/columns/overview_page_column_cell.dart';
 import 'package:exdock_backoffice/widgets/overview_page/content/utils/select_all_checkbox.dart';
-import 'package:exdock_backoffice/widgets/overview_page/visible_columns_selection/visible_columns_notifier.dart';
+import 'package:exdock_backoffice/widgets/overview_page/visible_columns_selection/columns_notifier.dart';
 
 class OverviewPageContentHeader extends StatelessWidget {
   const OverviewPageContentHeader({
@@ -17,7 +17,7 @@ class OverviewPageContentHeader extends StatelessWidget {
     required this.selectedIds,
   });
 
-  final VisibleColumnsNotifier visibleColumns;
+  final ColumnsNotifier visibleColumns;
   final double tableWidth;
   final IdSetNotifier selectedIds;
 

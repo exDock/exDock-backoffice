@@ -9,7 +9,7 @@ import 'package:exdock_backoffice/widgets/overview_page/filters/active_filters.d
 import 'package:exdock_backoffice/widgets/overview_page/filters/filter_notifier.dart';
 import 'package:exdock_backoffice/widgets/overview_page/filters/filter_setup/filter_setup.dart';
 import 'package:exdock_backoffice/widgets/overview_page/overview_page_header.dart';
-import 'package:exdock_backoffice/widgets/overview_page/visible_columns_selection/visible_columns_notifier.dart';
+import 'package:exdock_backoffice/widgets/overview_page/visible_columns_selection/columns_notifier.dart';
 import 'package:exdock_backoffice/widgets/pagination/page_notifier.dart';
 import 'package:flutter/material.dart';
 
@@ -29,8 +29,8 @@ class OverviewPage extends StatefulWidget {
     this.newUrl,
   });
 
-  final List<OverviewPageColumnData> columns;
-  final VisibleColumnsNotifier visibleColumns;
+  final ColumnsNotifier columns;
+  final ColumnsNotifier visibleColumns;
   final RetrieveOverviewPagePages getPages;
   final List<BulkAction> bulkActions;
   final FilterNotifier filters;
@@ -50,7 +50,7 @@ class _OverviewPageState extends State<OverviewPage> {
   void initState() {
     super.initState();
 
-    for (final OverviewPageColumnData column in widget.columns) {
+    for (final OverviewPageColumnData column in widget.columns.value) {
       if (!widget.visibleColumns.containsColumn(column)) {
         widget.visibleColumns.addColumn(column);
       }
