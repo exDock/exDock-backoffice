@@ -13,7 +13,7 @@ import 'package:exdock_backoffice/widgets/overview_page/filters/filter_notifier.
 import 'package:exdock_backoffice/widgets/overview_page/filters/filter_setup/filter_setup.dart';
 import 'package:exdock_backoffice/widgets/overview_page/filters/filter_setup/filter_setup_type_data.dart';
 import 'package:exdock_backoffice/widgets/overview_page/overview_page.dart';
-import 'package:exdock_backoffice/widgets/overview_page/visible_columns_selection/visible_columns_notifier.dart';
+import 'package:exdock_backoffice/widgets/overview_page/visible_columns_selection/columns_notifier.dart';
 import 'package:exdock_backoffice/widgets/pagination/page_notifier.dart';
 
 class PagesOverview extends StatefulWidget {
@@ -24,8 +24,7 @@ class PagesOverview extends StatefulWidget {
 }
 
 class _PagesOverviewState extends State<PagesOverview> {
-  final VisibleColumnsNotifier visibleColumns =
-      VisibleColumnsNotifier(visibleColumns: []);
+  final ColumnsNotifier visibleColumns = ColumnsNotifier(columns: []);
   Set<String> allIds = {};
   late IdSetNotifier selectedIds = IdSetNotifier(allIds);
 
@@ -40,17 +39,19 @@ class _PagesOverviewState extends State<PagesOverview> {
 
   Future<List<OverviewPageRow>> Function(
     FilterNotifier filters,
-    List<OverviewPageColumnData>? columns,
+    ColumnsNotifier columns,
     Set<String> allIds,
     IdSetNotifier selectedIds,
     PageNotifier pageNotifier,
+    bool updateColumns,
   ) getPagesRows() {
     Future<List<OverviewPageRow>> getRows(
       FilterNotifier filters,
-      List<OverviewPageColumnData>? columns,
+      ColumnsNotifier columns,
       Set<String> allIds,
       IdSetNotifier selectedIds,
       PageNotifier pageNotifier,
+      bool updateColumns,
     ) async {
       pageNotifier.maxPage = 1;
       if (pageNotifier.value == 0) {
@@ -281,10 +282,11 @@ class _PagesOverviewState extends State<PagesOverview> {
         List<OverviewPageColumnData>,
         Future<List<OverviewPageRow>> Function(
           FilterNotifier filters,
-          List<OverviewPageColumnData>? columns,
+          ColumnsNotifier columns,
           Set<String> allIds,
           IdSetNotifier selectedIds,
           PageNotifier pageNotifier,
+          bool updateColumns,
         )
       )> getPagesOverviewData() async {
     return (await getPagesColumns(), getPagesRows());
@@ -321,10 +323,11 @@ class _PagesOverviewState extends State<PagesOverview> {
     return FutureBuilder(
       future: getPagesOverviewData(),
       builder: (context, snapshot) {
+        final columns = ColumnsNotifier(columns: snapshot.data!.$1);
         if (snapshot.connectionState == ConnectionState.done &&
             !snapshot.hasError) {
           return OverviewPage(
-            columns: snapshot.data!.$1,
+            columns: columns,
             visibleColumns: visibleColumns,
             filters: filters,
             pageNotifier: pageNotifier,
@@ -334,6 +337,7 @@ class _PagesOverviewState extends State<PagesOverview> {
               allIds: allIds,
               selectedIds: selectedIds,
               pageNotifier: pageNotifier,
+              columns: columns,
             ),
             individualName: "page",
             allIds: allIds,

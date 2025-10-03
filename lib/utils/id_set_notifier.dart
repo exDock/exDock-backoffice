@@ -5,7 +5,7 @@ class IdSetNotifier extends ValueNotifier<Set<String>> {
   IdSetNotifier(this.allIds) : super({});
 
   /// Set of all ids that could be selected
-  final Set<String> allIds;
+  Set<String> allIds;
 
   /// Check if id is in the set
   bool isPresent(String id) => value.contains(id);
