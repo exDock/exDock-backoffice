@@ -31,7 +31,8 @@ class _ProductInfoState extends State<ProductInfo> {
           "product_id": productId,
           "page_name": "product_info",
         },
-      )
+      ),
+      null,
     );
 
     return jsonDecode(httpData.responseBody!) as Map<String, dynamic>;
