@@ -54,9 +54,8 @@ class _LoginSettingsState extends State<LoginSettings> {
       }
     }
 
-    void saveSettings() async {
-      await settings.setSetting("base_url", controller.text);
-      if (mounted) return;
+    void saveSettings() {
+      settings.setSetting("base_url", controller.text);
       Navigator.pop(context);
     }
 

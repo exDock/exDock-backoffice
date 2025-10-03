@@ -1,6 +1,7 @@
 // Flutter imports:ck_backoffice/pages/catalog/product/info/id_data/category_list.dart';
 
 // Flutter imports:
+import 'package:exdock_backoffice/pages/catalog/product/info/id_data/category_list.dart';
 import 'package:flutter/material.dart';
 
 // Project imports:
