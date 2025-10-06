@@ -3,9 +3,6 @@
 // Dart imports:
 import 'dart:convert';
 
-// Flutter imports:
-import 'package:flutter/material.dart';
-
 // Project imports:
 import 'package:exdock_backoffice/pages/content/pages/bulk_actions/delete_pages_bulk_action.dart';
 import 'package:exdock_backoffice/utils/HTTP/http_data.dart';
@@ -20,8 +17,10 @@ import 'package:exdock_backoffice/widgets/overview_page/filters/filter_notifier.
 import 'package:exdock_backoffice/widgets/overview_page/filters/filter_setup/filter_setup.dart';
 import 'package:exdock_backoffice/widgets/overview_page/filters/filter_setup/filter_setup_type_data.dart';
 import 'package:exdock_backoffice/widgets/overview_page/overview_page.dart';
-import 'package:exdock_backoffice/widgets/overview_page/visible_columns_selection/visible_columns_notifier.dart';
+// Flutter imports:
+import 'package:exdock_backoffice/widgets/overview_page/visible_columns_selection/columns_notifier.dart';
 import 'package:exdock_backoffice/widgets/pagination/page_notifier.dart';
+import 'package:flutter/material.dart';
 
 class TemplatesOverview extends StatefulWidget {
   const TemplatesOverview({super.key});
@@ -31,8 +30,7 @@ class TemplatesOverview extends StatefulWidget {
 }
 
 class _PagesOverviewState extends State<TemplatesOverview> {
-  final VisibleColumnsNotifier visibleColumns =
-      VisibleColumnsNotifier(visibleColumns: []);
+  final ColumnsNotifier visibleColumns = ColumnsNotifier(columns: []);
   Set<String> allIds = {};
   late IdSetNotifier selectedIds = IdSetNotifier(allIds);
 
@@ -42,17 +40,19 @@ class _PagesOverviewState extends State<TemplatesOverview> {
 
   Future<List<OverviewPageRow>> Function(
     FilterNotifier filters,
-    List<OverviewPageColumnData>? columns,
+    ColumnsNotifier columns,
     Set<String> allIds,
     IdSetNotifier selectedIds,
     PageNotifier pageNotifier,
+    bool updateColumns,
   ) getPagesRows() {
     Future<List<OverviewPageRow>> getRows(
       FilterNotifier filters,
-      List<OverviewPageColumnData>? columns,
+      ColumnsNotifier columns,
       Set<String> allIds,
       IdSetNotifier selectedIds,
       PageNotifier pageNotifier,
+      bool updateColumns,
     ) async {
       final HttpData httpData = await standardPostRequest(
         "/api/v1/getBlockData",
@@ -99,10 +99,11 @@ class _PagesOverviewState extends State<TemplatesOverview> {
         List<OverviewPageColumnData>,
         Future<List<OverviewPageRow>> Function(
           FilterNotifier filters,
-          List<OverviewPageColumnData>? columns,
+          ColumnsNotifier columns,
           Set<String> allIds,
           IdSetNotifier selectedIds,
           PageNotifier pageNotifier,
+          bool updateColumns,
         )
       )> getPagesOverviewData() async {
     return (await getPagesColumns(), getPagesRows());
@@ -141,8 +142,12 @@ class _PagesOverviewState extends State<TemplatesOverview> {
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.done &&
             !snapshot.hasError) {
-          return OverviewPage(
+          final ColumnsNotifier columnsNotifier = ColumnsNotifier(
             columns: snapshot.data!.$1,
+          );
+
+          return OverviewPage(
+            columns: columnsNotifier,
             visibleColumns: visibleColumns,
             filters: filters,
             pageNotifier: pageNotifier,
@@ -152,6 +157,7 @@ class _PagesOverviewState extends State<TemplatesOverview> {
               allIds: allIds,
               selectedIds: selectedIds,
               pageNotifier: pageNotifier,
+              columns: columnsNotifier,
             ),
             individualName: "template",
             allIds: allIds,
