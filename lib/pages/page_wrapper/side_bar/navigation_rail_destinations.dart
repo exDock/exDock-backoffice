@@ -1,4 +1,6 @@
 // Flutter imports:
+
+// Flutter imports:
 import 'package:flutter/material.dart';
 
 // Package imports:
@@ -137,6 +139,11 @@ Map<String, HoverableNavigationRailDestination> navigationRailDestinations(
           ),
         ),
       ),
+    ),
+    "/files": HoverableNavigationRailDestination(
+      onHoverStateChange: noHoverMenuOnHoverStateChange,
+      icon: const Icon(Symbols.folder_rounded),
+      label: const Text("files"),
     ),
     "/system": HoverableNavigationRailDestination(
       onHoverStateChange: noHoverMenuOnHoverStateChange,
