@@ -1,6 +1,4 @@
 // Flutter imports:
-import 'package:flutter/material.dart';
-
 // Project imports:
 import 'package:exdock_backoffice/globals/globals.dart';
 import 'package:exdock_backoffice/utils/id_set_notifier.dart';
@@ -8,6 +6,7 @@ import 'package:exdock_backoffice/widgets/overview_page/content/columns/overview
 import 'package:exdock_backoffice/widgets/overview_page/content/row/overview_page_row_cell.dart';
 import 'package:exdock_backoffice/widgets/overview_page/content/row/overview_page_row_cell_string.dart';
 import 'package:exdock_backoffice/widgets/overview_page/visible_columns_selection/columns_notifier.dart';
+import 'package:flutter/material.dart';
 
 class OverviewPageRow extends StatefulWidget {
   const OverviewPageRow({
@@ -80,10 +79,7 @@ class _OverviewPageRowState extends State<OverviewPageRow> {
                     if (value) {
                       try {
                         widget.selectedIds.addId(widget.id);
-                      } catch (_) {
-                        print(
-                            "widget.selectedIds.allIds: ${widget.selectedIds.allIds}");
-                      }
+                      } catch (_) {}
                     } else {
                       widget.selectedIds.removeId(widget.id);
                     }
