@@ -1,4 +1,6 @@
 // Flutter imports:
+
+// Flutter imports:
 import 'package:flutter/material.dart';
 
 // Package imports:
@@ -50,6 +52,11 @@ class _LoginSettingsState extends State<LoginSettings> {
         isValidated.value = false;
         return;
       }
+    }
+
+    void saveSettings() {
+      settings.setSetting("base_url", controller.text);
+      Navigator.pop(context);
     }
 
     return IconButton(
@@ -106,13 +113,7 @@ class _LoginSettingsState extends State<LoginSettings> {
                                     alignment: Alignment.bottomRight,
                                     child: ExdockButton(
                                       label: "Save",
-                                      onPressed: () {
-                                        settings.setSetting(
-                                          "base_url",
-                                          controller.text,
-                                        );
-                                        Navigator.pop(context);
-                                      },
+                                      onPressed: saveSettings,
                                     ),
                                   )
                                 : Align(

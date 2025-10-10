@@ -144,6 +144,11 @@ Map<String, HoverableNavigationRailDestination> navigationRailDestinations(
         ),
       ),
     ),
+    "/files": HoverableNavigationRailDestination(
+      onHoverStateChange: noHoverMenuOnHoverStateChange,
+      icon: const Icon(Symbols.folder_rounded),
+      label: const Text("files"),
+    ),
     "/system": HoverableNavigationRailDestination(
       onHoverStateChange: noHoverMenuOnHoverStateChange,
       icon: const Icon(Symbols.host_rounded),
