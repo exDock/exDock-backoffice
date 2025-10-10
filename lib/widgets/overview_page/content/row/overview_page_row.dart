@@ -1,4 +1,6 @@
 // Flutter imports:
+
+// Flutter imports:
 import 'package:flutter/material.dart';
 
 // Project imports:
@@ -80,10 +82,7 @@ class _OverviewPageRowState extends State<OverviewPageRow> {
                     if (value) {
                       try {
                         widget.selectedIds.addId(widget.id);
-                      } catch (_) {
-                        print(
-                            "widget.selectedIds.allIds: ${widget.selectedIds.allIds}");
-                      }
+                      } catch (_) {}
                     } else {
                       widget.selectedIds.removeId(widget.id);
                     }

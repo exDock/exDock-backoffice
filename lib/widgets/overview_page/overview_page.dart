@@ -1,4 +1,6 @@
 // Flutter imports:
+
+// Flutter imports:
 import 'package:flutter/material.dart';
 
 // Project imports:
@@ -27,6 +29,7 @@ class OverviewPage extends StatefulWidget {
     required this.selectedIds,
     required this.pageNotifier,
     this.getFilters,
+    this.newUrl,
   });
 
   final ColumnsNotifier columns;
@@ -39,6 +42,7 @@ class OverviewPage extends StatefulWidget {
   final IdSetNotifier selectedIds;
   final PageNotifier pageNotifier;
   final Future<List<FilterSetupData>> Function()? getFilters;
+  final String? newUrl;
 
   @override
   State<OverviewPage> createState() => _OverviewPageState();
@@ -68,6 +72,7 @@ class _OverviewPageState extends State<OverviewPage> {
           selectedIds: widget.selectedIds,
           individualName: widget.individualName,
           getFilters: widget.getFilters,
+          newUrl: widget.newUrl,
         ),
         Padding(
           padding: const EdgeInsets.only(top: 124, left: 24, right: 24),

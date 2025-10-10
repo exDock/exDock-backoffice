@@ -5,9 +5,9 @@ import 'package:flutter/material.dart';
 
 // Project imports:
 import 'package:exdock_backoffice/globals/globals.dart';
+import 'package:exdock_backoffice/pages/content/templates/page_info/blocks/top_bar/id_list.dart';
 import 'package:exdock_backoffice/utils/map_notifier.dart';
 import 'package:exdock_backoffice/widgets/buttons/exdock_save_button.dart';
-import 'package:exdock_backoffice/widgets/exdock_switch.dart';
 
 class TopBar extends StatefulWidget {
   const TopBar({
@@ -53,59 +53,23 @@ class _TopBarState extends State<TopBar> {
           const Expanded(
             child: SizedBox(),
           ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: IdList(
+              saveNotifier: widget.saveNotifier,
+            ),
+          ),
+          const SizedBox(
+            width: 36,
+          ),
           ExDockSaveButton(
             somethingToSaveNotifier: widget.saveNotifier,
             onPressed: () {
               widget.saveValues();
             },
           ),
-          Container(
-            padding: const EdgeInsets.only(left: 64, right: 12, top: 12),
-            child: Row(
-              children: [
-                const Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    Text(
-                      "enable product",
-                      style: TextStyle(color: Colors.white),
-                    ),
-                    SizedBox(
-                      height: 8,
-                    ),
-                    Text(
-                      "searchable",
-                      style: TextStyle(color: Colors.white),
-                    ),
-                  ],
-                ),
-                const SizedBox(
-                  width: 24,
-                ),
-                Column(
-                  children: [
-                    ExDockSwitch(
-                      value: true,
-                      onChanged: (e) {
-                        return !e;
-                      },
-                    ),
-                    const SizedBox(
-                      height: 8,
-                    ),
-                    ExDockSwitch(
-                      value: false,
-                      onChanged: (e) {
-                        return !e;
-                      },
-                    ),
-                  ],
-                ),
-                const SizedBox(
-                  width: 12,
-                ),
-              ],
-            ),
+          const SizedBox(
+            width: 44,
           )
         ],
       ),

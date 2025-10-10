@@ -98,6 +98,10 @@ Map<String, HoverableNavigationRailDestination> navigationRailDestinations(
                 route: "/content/pages",
                 buttonText: "pages",
               ),
+              const SimpleHoverMenuButton(
+                route: "/content/templates",
+                buttonText: "templates",
+              ),
             ],
           ),
         ),
