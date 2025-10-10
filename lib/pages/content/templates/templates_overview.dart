@@ -5,6 +5,7 @@ import 'dart:convert';
 
 // Project imports:
 import 'package:exdock_backoffice/pages/content/pages/bulk_actions/delete_pages_bulk_action.dart';
+import 'package:exdock_backoffice/router/router.dart';
 import 'package:exdock_backoffice/utils/HTTP/http_data.dart';
 import 'package:exdock_backoffice/utils/HTTP/post_requests.dart';
 import 'package:exdock_backoffice/utils/id_set_notifier.dart';
@@ -77,15 +78,20 @@ class _PagesOverviewState extends State<TemplatesOverview> {
       final List<OverviewPageRow> rows = [];
       pageNotifier.maxPage = 1;
 
-      for (dynamic template in templates) {
-        rows.add(OverviewPageRow(
-          id: template["_id"],
-          name: template["_id"],
-          visibleColumns: visibleColumns,
-          columnValues: const {},
-          allIds: allIds,
-          selectedIds: selectedIds,
-        ));
+      for (final dynamic template in templates) {
+        rows.add(
+          OverviewPageRow(
+            id: template["_id"],
+            name: template["_id"],
+            visibleColumns: visibleColumns,
+            columnValues: const {},
+            allIds: allIds,
+            selectedIds: selectedIds,
+            onSelect: () {
+              router.push("/content/templates/${template["_id"]}");
+            },
+          ),
+        );
       }
 
       return rows;
