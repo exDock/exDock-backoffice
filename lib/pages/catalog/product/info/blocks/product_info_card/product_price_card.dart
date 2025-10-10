@@ -63,19 +63,23 @@ class _ProductPriceCardState extends State<ProductPriceCard> {
       },
     );
 
-    if (widget.block.value['product_sale_dates'] != null) {
-      final List<String> startDateSplit = widget
-          .block.value['product_sale_dates'][0]['current_attribute_value']
-          .split('-');
+    final List<dynamic> attributes = widget.block.value['attributes'];
+    final Map<String, dynamic> saleDatesAttribute = attributes.firstWhere(
+      (element) => element['attribute_id'] == "product_sale_dates",
+      orElse: () => {},
+    );
+    final String? startDateString =
+        saleDatesAttribute['current_attribute_value'][0];
+    final String? endDateString =
+        saleDatesAttribute['current_attribute_value'][1];
+
+    if (startDateString != null) {
+      final List<String> startDateSplit = startDateString.split('-');
       startDate = DateTime.utc(int.parse(startDateSplit[0]),
           int.parse(startDateSplit[1]), int.parse(startDateSplit[2]));
     }
-    if (widget.block.value['product_sale_dates'][1]
-            ['current_attribute_value'] !=
-        null) {
-      final List<String> endDateSplit = widget
-          .block.value['product_sale_dates'][1]['current_attribute_value']
-          .split('-');
+    if (endDateString != null) {
+      final List<String> endDateSplit = endDateString.split('-');
       endDate = DateTime.utc(int.parse(endDateSplit[0]),
           int.parse(endDateSplit[1]), int.parse(endDateSplit[2]));
     }
@@ -92,17 +96,22 @@ class _ProductPriceCardState extends State<ProductPriceCard> {
             shrinkWrap: true,
             itemCount: widget.block.value['attributes'].length,
             itemBuilder: (context, index) {
-              Widget child = GenerateAttribute(
-                attribute: widget.block.value['attributes'][index],
-                changeAttributeMap: widget.changeAttributeMap,
-              );
-              if (index != 0) {
-                child = Padding(
-                  padding: const EdgeInsets.only(top: 24),
-                  child: child,
+              final Map<String, dynamic> currentAttribute =
+                  widget.block.value['attributes'][index];
+              if (currentAttribute['attribute_id'] != "product_sale_dates") {
+                Widget child = GenerateAttribute(
+                  attribute: widget.block.value['attributes'][index],
+                  changeAttributeMap: widget.changeAttributeMap,
                 );
+                if (index != 0) {
+                  child = Padding(
+                    padding: const EdgeInsets.only(top: 24),
+                    child: child,
+                  );
+                }
+                return child;
               }
-              return child;
+              return null;
             },
           ),
           const Row(
