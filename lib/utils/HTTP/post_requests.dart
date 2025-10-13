@@ -14,9 +14,9 @@ import 'package:exdock_backoffice/utils/authentication/authentication_data.dart'
 
 Future<HttpData> standardPostRequest(
   String endpoint,
-  String body,
+  String body, {
   Map<String, String>? headers,
-) async {
+}) async {
   const FlutterSecureStorage storage = FlutterSecureStorage();
   int statusCode;
   String responseBody = "";

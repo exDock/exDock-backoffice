@@ -67,7 +67,7 @@ class _ProductInfoImageCardState extends State<ProductInfoImageCard> {
         final HttpData uploadRequest = await standardPostRequest(
           baseRequestUrl,
           jsonEncode(body),
-          {HttpHeaders.contentTypeHeader: contentType},
+          headers: {HttpHeaders.contentTypeHeader: contentType},
         );
       } catch (e) {
         print('Error uploading image: $e');

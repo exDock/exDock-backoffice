@@ -44,7 +44,6 @@ class SystemSynchronous extends StatelessWidget {
           final response = await standardPostRequest(
             "/api/v1/system/setSettings",
             jsonEncode(serverRequestMap),
-            null,
           );
 
           if (response.statusCode == 200) {
