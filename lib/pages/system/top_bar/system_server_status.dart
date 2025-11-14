@@ -1,15 +1,13 @@
 // Flutter imports:
-import 'package:flutter/material.dart';
-
-// Package imports:
-import 'package:intl/intl.dart';
-import 'package:web_socket_channel/web_socket_channel.dart';
-
 // Project imports:
 import 'package:exdock_backoffice/globals/variables.dart';
 import 'package:exdock_backoffice/utils/HTTP/connect_websocket_stream.dart';
 import 'package:exdock_backoffice/utils/authentication/authentication_data.dart';
 import 'package:exdock_backoffice/widgets/exdock_gradient_progress_bar.dart';
+import 'package:flutter/material.dart';
+// Package imports:
+import 'package:intl/intl.dart';
+import 'package:web_socket_channel/web_socket_channel.dart';
 
 class SystemServerStatus extends StatefulWidget {
   const SystemServerStatus({super.key});
@@ -32,12 +30,30 @@ class _SystemServerStatusState extends State<SystemServerStatus> {
   );
   late Future<WebSocketChannel> _channel;
 
+  void handleWsData(ValueNotifier values, Map<String, dynamic> data) {
+    if (data.containsKey("type") && data["type"] == "serverHealth") {
+      final ServerHealth serverHealth = ServerHealth(
+        serverStatus: fromStringToStatus(data["serverHealth"]),
+        timestamp: data["timeStamp"],
+        processCpuUsage: data["processCpuLoad"],
+        systemCpuUsage: data["systemCpuLoad"],
+        totalMemory: data["totalMemory"],
+        usedMemory: data["usedMemory"],
+      );
+      values.value = serverHealth;
+    }
+  }
+
   @override
   void initState() {
     try {
       final String baseUrl = settings.getSetting("base_url");
       final Uri uri = Uri.parse("$baseUrl/api/v1/docker/getData");
-      _channel = getWebsocketChannel(uri.convertToWs(), _serverHealthNotifier);
+      _channel = getWebsocketChannel(
+        uri.convertToWs(),
+        _serverHealthNotifier,
+        handleWsData,
+      );
     } catch (e) {
       if (e is NotAuthenticatedException) {
         throw NotAuthenticatedException("");
