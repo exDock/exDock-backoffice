@@ -1,17 +1,15 @@
 // Dart imports:
 
-// Flutter imports:
-import 'package:flutter/material.dart';
-
-// Package imports:
-import 'package:material_symbols_icons/material_symbols_icons.dart';
-import 'package:web_socket_channel/web_socket_channel.dart';
-
 // Project imports:
 import 'package:exdock_backoffice/globals/globals.dart';
 import 'package:exdock_backoffice/globals/variables.dart';
 import 'package:exdock_backoffice/utils/HTTP/connect_websocket_stream.dart';
 import 'package:exdock_backoffice/utils/authentication/authentication_data.dart';
+// Flutter imports:
+import 'package:flutter/material.dart';
+// Package imports:
+import 'package:material_symbols_icons/material_symbols_icons.dart';
+import 'package:web_socket_channel/web_socket_channel.dart';
 
 class Notifications extends StatefulWidget {
   const Notifications({super.key});
@@ -33,6 +31,15 @@ class _NotificationsState extends State<Notifications> {
     color: Theme.of(context).primaryColor,
   );
 
+  void handleWsData(ValueNotifier values, Map<String, dynamic> data) {
+    if (data.containsKey("type") && data["type"] == "errorNotification") {
+      final List<String> existingValues = List<String>.from(values.value);
+      final String errorMessage = data["error"]["errorMessage"];
+      existingValues.add(errorMessage);
+      values.value = existingValues;
+    }
+  }
+
   @override
   void initState() {
     super.initState();
@@ -41,8 +48,11 @@ class _NotificationsState extends State<Notifications> {
     try {
       final String baseUrl = settings.getSetting("base_url");
       final Uri uri = Uri.parse("$baseUrl/api/v1/ws/error");
-      _channel =
-          getWebsocketChannel(uri.convertToWs(), _notificationsNotifier!);
+      _channel = getWebsocketChannel(
+        uri.convertToWs(),
+        _notificationsNotifier!,
+        handleWsData,
+      );
     } catch (e) {
       if (e is NotAuthenticatedException) {
         throw NotAuthenticatedException("");
