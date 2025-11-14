@@ -1,13 +1,14 @@
 // Dart imports:
 import 'dart:convert';
 
+// Flutter imports:
+import 'package:flutter/material.dart';
+
 // Project imports:
 import 'package:exdock_backoffice/pages/content/templates/page_info/template_info_synchronous.dart';
 import 'package:exdock_backoffice/utils/HTTP/http_data.dart';
 import 'package:exdock_backoffice/utils/HTTP/post_requests.dart';
 import 'package:exdock_backoffice/utils/map_notifier.dart';
-// Flutter imports:
-import 'package:flutter/material.dart';
 
 class TemplateInfo extends StatefulWidget {
   const TemplateInfo({

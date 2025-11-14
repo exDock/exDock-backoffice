@@ -1,9 +1,14 @@
+// Flutter imports:
+import 'package:flutter/material.dart';
+
+// Package imports:
+import 'package:flutter_html/flutter_html.dart';
+import 'package:web_socket_channel/web_socket_channel.dart';
+
+// Project imports:
 import 'package:exdock_backoffice/pages/content/pages/page_info/blocks/page_block/page_tree.dart';
 import 'package:exdock_backoffice/utils/HTTP/connect_websocket_stream.dart';
 import 'package:exdock_backoffice/utils/authentication/authentication_data.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_html/flutter_html.dart';
-import 'package:web_socket_channel/web_socket_channel.dart';
 
 class PagePreview extends StatefulWidget {
   const PagePreview({

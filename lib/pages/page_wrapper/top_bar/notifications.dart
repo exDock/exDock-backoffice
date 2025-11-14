@@ -1,15 +1,17 @@
 // Dart imports:
 
+// Flutter imports:
+import 'package:flutter/material.dart';
+
+// Package imports:
+import 'package:material_symbols_icons/material_symbols_icons.dart';
+import 'package:web_socket_channel/web_socket_channel.dart';
+
 // Project imports:
 import 'package:exdock_backoffice/globals/globals.dart';
 import 'package:exdock_backoffice/globals/variables.dart';
 import 'package:exdock_backoffice/utils/HTTP/connect_websocket_stream.dart';
 import 'package:exdock_backoffice/utils/authentication/authentication_data.dart';
-// Flutter imports:
-import 'package:flutter/material.dart';
-// Package imports:
-import 'package:material_symbols_icons/material_symbols_icons.dart';
-import 'package:web_socket_channel/web_socket_channel.dart';
 
 class Notifications extends StatefulWidget {
   const Notifications({super.key});

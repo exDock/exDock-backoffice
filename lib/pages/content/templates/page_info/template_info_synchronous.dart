@@ -1,6 +1,9 @@
 // Dart imports:
 import 'dart:convert';
 
+// Flutter imports:
+import 'package:flutter/material.dart';
+
 // Project imports:
 import 'package:exdock_backoffice/pages/content/templates/page_info/blocks/generate_block.dart';
 import 'package:exdock_backoffice/pages/content/templates/page_info/blocks/page_info_block.dart';
@@ -8,8 +11,6 @@ import 'package:exdock_backoffice/pages/content/templates/page_info/blocks/top_b
 import 'package:exdock_backoffice/utils/HTTP/post_requests.dart';
 import 'package:exdock_backoffice/utils/HTTP/put_requests.dart';
 import 'package:exdock_backoffice/utils/map_notifier.dart';
-// Flutter imports:
-import 'package:flutter/material.dart';
 
 class TemplateInfoSynchronous extends StatelessWidget {
   const TemplateInfoSynchronous({

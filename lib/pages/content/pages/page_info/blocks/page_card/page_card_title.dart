@@ -1,5 +1,8 @@
-import 'package:exdock_backoffice/pages/content/pages/page_info/blocks/page_card/page_card.dart';
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Project imports:
+import 'package:exdock_backoffice/pages/content/pages/page_info/blocks/page_card/page_card.dart';
 
 class PageCardTitle extends StatelessWidget {
   const PageCardTitle({

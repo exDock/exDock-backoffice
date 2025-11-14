@@ -1,5 +1,8 @@
-import 'package:exdock_backoffice/globals/styling.dart';
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Project imports:
+import 'package:exdock_backoffice/globals/styling.dart';
 
 class PageCard extends StatelessWidget {
   const PageCard({

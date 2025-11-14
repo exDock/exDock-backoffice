@@ -1,10 +1,15 @@
+// Flutter imports:
+import 'package:flutter/material.dart';
+
+// Package imports:
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+
+// Project imports:
 import 'package:exdock_backoffice/pages/content/pages/page_info/blocks/page_card/page_card_title.dart';
 import 'package:exdock_backoffice/utils/map_notifier.dart';
 import 'package:exdock_backoffice/widgets/exdock_card.dart';
 import 'package:exdock_backoffice/widgets/exdock_switch.dart';
 import 'package:exdock_backoffice/widgets/input/exdock_text_field.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 class PageVariables extends StatelessWidget {
   const PageVariables({
