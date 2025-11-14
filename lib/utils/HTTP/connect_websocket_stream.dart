@@ -1,22 +1,23 @@
 // Dart imports:
 import 'dart:convert';
 
+// Project imports:
+import 'package:exdock_backoffice/pages/system/top_bar/system_server_status.dart';
+import 'package:exdock_backoffice/utils/HTTP/login_requests.dart';
+import 'package:exdock_backoffice/utils/authentication/authentication_data.dart';
 // Flutter imports:
 import 'package:flutter/cupertino.dart';
-
 // Package imports:
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
 
 // Project imports:
-import 'package:exdock_backoffice/pages/system/top_bar/system_server_status.dart';
-import 'package:exdock_backoffice/utils/HTTP/login_requests.dart';
-import 'package:exdock_backoffice/utils/authentication/authentication_data.dart';
-
-// Project imports:
 
 Future<WebSocketChannel> getWebsocketChannel(
-    Uri wsUrl, ValueNotifier values) async {
+  Uri wsUrl,
+  ValueNotifier values,
+  Function handleWsData,
+) async {
   const FlutterSecureStorage storage = FlutterSecureStorage();
   String? accessToken = await storage.read(key: "access_token");
   final String? refreshToken = await storage.read(key: "refresh_token");
@@ -73,25 +74,7 @@ Future<WebSocketChannel> getWebsocketChannel(
           return;
         }
         final Map<String, dynamic> data = jsonDecode(message);
-        switch (data["type"]) {
-          case "errorNotification":
-            final List<String> existingValues = List<String>.from(values.value);
-            final String errorMessage = data["error"]["errorMessage"];
-            existingValues.add(errorMessage);
-            values.value = existingValues;
-            break;
-          case "serverStatus":
-            final ServerHealth serverHealth = ServerHealth(
-              serverStatus: fromStringToStatus(data["serverHealth"]),
-              timestamp: data["timeStamp"],
-              processCpuUsage: data["processCpuLoad"],
-              systemCpuUsage: data["systemCpuLoad"],
-              totalMemory: data["totalMemory"],
-              usedMemory: data["usedMemory"],
-            );
-            values.value = serverHealth;
-            break;
-        }
+        handleWsData(values, data);
       }
     },
     onError: (error) {
