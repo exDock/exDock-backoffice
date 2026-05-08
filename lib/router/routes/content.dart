@@ -1,10 +1,10 @@
 // Flutter imports:
 
 // Flutter imports:
-import 'package:exdock_backend_client/pages/content/blocks/blocks_overview.dart';
 import 'package:flutter/material.dart';
 
 // Package imports:
+import 'package:exdock_backend_client/pages/content/blocks/blocks_overview.dart';
 import 'package:go_router/go_router.dart';
 
 // Project imports:
