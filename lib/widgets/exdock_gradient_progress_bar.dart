@@ -91,7 +91,7 @@ class _ExDockGradientProgressBarState extends State<ExDockGradientProgressBar>
                             fontWeight: FontWeight.bold,
                             shadows: [
                               Shadow(
-                                color: Colors.black.withOpacity(0.5),
+                                color: Colors.black.withValues(alpha: 0.7),
                                 blurRadius: 2,
                                 offset: const Offset(1, 1),
                               ),

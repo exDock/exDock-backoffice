@@ -4,10 +4,8 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
-import 'package:exdock_backoffice/pages/catalog/product/info/blocks/product_info_card/product_id_data_card.dart';
-import 'package:exdock_backoffice/pages/catalog/product/info/blocks/product_info_card/product_info_image_card.dart';
-import 'package:exdock_backoffice/pages/catalog/product/info/blocks/product_info_card/product_price_card.dart';
 import 'package:exdock_backoffice/pages/catalog/product/info/blocks/standard_block.dart';
+import 'package:exdock_backoffice/pages/files/blocks/files/files.dart';
 import 'package:exdock_backoffice/utils/map_notifier.dart';
 
 class GenerateBlock extends StatelessWidget {
@@ -28,20 +26,8 @@ class GenerateBlock extends StatelessWidget {
         changeAttributeMap: changeAttributeMap,
       );
     }
-    if (block.value["block_type"] == "id_information") {
-      return IdDataBlock(
-        block: block,
-        changeAttributeMap: changeAttributeMap,
-      );
-    }
-    if (block.value["block_type"] == "images") {
-      return ProductInfoImageCard(
-        block: block,
-        changeAttributeMap: changeAttributeMap,
-      );
-    }
-    if (block.value["block_type"] == "product_price") {
-      return ProductPriceCard(
+    if (block.value["block_type"] == "files") {
+      return Files(
         block: block,
         changeAttributeMap: changeAttributeMap,
       );

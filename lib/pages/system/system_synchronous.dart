@@ -25,7 +25,8 @@ class SystemSynchronous extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final MapNotifier changeSettingsMap = MapNotifier();
-    final List<MapEntry<String, dynamic>> blocksEntriesList = blocks.entries.toList();
+    final List<MapEntry<String, dynamic>> blocksEntriesList =
+        blocks.entries.toList();
 
     void saveValues() async {
       Map<String, dynamic> serverRequestMap = {};

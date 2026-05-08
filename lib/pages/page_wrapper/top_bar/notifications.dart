@@ -59,7 +59,10 @@ class _NotificationsState extends State<Notifications> {
       if (e is NotAuthenticatedException) {
         throw NotAuthenticatedException("");
       }
-      throw Exception("Error parsing URI: $e");
+      // if (e is Exception) {
+      //   router.push("/login");
+      // }
+      // throw Exception("Error parsing URI: $e");
     }
   }
 

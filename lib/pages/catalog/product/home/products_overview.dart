@@ -67,7 +67,6 @@ class _ProductsOverviewState extends State<ProductsOverview> {
     for (final json in products) {
       final id = json["_id"];
       allIds.add(id);
-      print("allIds: $allIds");
 
       if (updateColumns) {
         final jsonColumns = jsonMap['columns'] as List;
@@ -83,7 +82,6 @@ class _ProductsOverviewState extends State<ProductsOverview> {
         columns.value = newColumns;
       }
 
-      print("json: $json");
       rows.add(OverviewPageRow(
         id: id,
         name: json['name'],

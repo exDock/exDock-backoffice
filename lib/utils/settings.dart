@@ -14,14 +14,18 @@ class Settings {
 
   T getSetting<T>(String key) {
     try {
-      if (settingsMap.containsKey(key)) {
-        return settingsMap[key] as T;
+      if (prefs.containsKey(key)) {
+        return prefs.get(key) as T;
       } else {
-        if (prefs.containsKey(key)) {
-          return prefs.get(key) as T;
-        } else {
-          throw Exception("Could not find setting: $key");
+        if (settingsMap.containsKey(key)) {
+          final dynamic value = settingsMap[key];
+          if (value is T) {
+            return value;
+          } else {
+            throw Exception("Type mismatch for key: $key");
+          }
         }
+        throw Exception("Could not find setting: $key");
       }
     } catch (e) {
       rethrow;
