@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "org.exdock" "\0"
-            VALUE "FileDescription", "exdock_backend_client" "\0"
+            VALUE "FileDescription", "exdock_backoffice" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "exdock_backend_client" "\0"
+            VALUE "InternalName", "exdock_backoffice" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2024 org.exdock. All rights reserved." "\0"
-            VALUE "OriginalFilename", "exdock_backend_client.exe" "\0"
-            VALUE "ProductName", "exdock_backend_client" "\0"
+            VALUE "OriginalFilename", "exdock_backoffice.exe" "\0"
+            VALUE "ProductName", "exdock_backoffice" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

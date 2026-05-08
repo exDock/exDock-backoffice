@@ -2,10 +2,10 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
-import 'package:exdock_backend_client/pages/catalog/category/category_data.dart';
-import 'package:exdock_backend_client/pages/catalog/category/edit/content/category_edit_content.dart';
-import 'package:exdock_backend_client/pages/catalog/category/edit/header/category_edit_header.dart';
-import 'package:exdock_backend_client/utils/map_notifier.dart';
+import 'package:exdock_backoffice/pages/catalog/category/category_data.dart';
+import 'package:exdock_backoffice/pages/catalog/category/edit/content/category_edit_content.dart';
+import 'package:exdock_backoffice/pages/catalog/category/edit/header/category_edit_header.dart';
+import 'package:exdock_backoffice/utils/map_notifier.dart';
 
 class CategoryEdit extends StatefulWidget {
   const CategoryEdit({super.key, required this.categorySelection});

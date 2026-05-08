@@ -2,8 +2,8 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
-import 'package:exdock_backend_client/widgets/overview_page/content/columns/overview_page_column.dart';
-import 'package:exdock_backend_client/widgets/overview_page/visible_columns_selection/visible_columns_notifier.dart';
+import 'package:exdock_backoffice/widgets/overview_page/content/columns/overview_page_column.dart';
+import 'package:exdock_backoffice/widgets/overview_page/visible_columns_selection/columns_notifier.dart';
 
 class VisibleColumnSelection extends StatefulWidget {
   const VisibleColumnSelection({
@@ -14,7 +14,7 @@ class VisibleColumnSelection extends StatefulWidget {
   });
 
   final OverviewPageColumnData column;
-  final VisibleColumnsNotifier visibleColumns;
+  final ColumnsNotifier visibleColumns;
   final Function(OverviewPageColumnData column, bool isVisible) onToggle;
 
   @override

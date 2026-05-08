@@ -1,6 +1,6 @@
 // Project imports:
-import 'package:exdock_backend_client/widgets/overview_page/filters/filter_notifier.dart';
-import 'package:exdock_backend_client/widgets/overview_page/filters/types/filter.dart';
+import 'package:exdock_backoffice/widgets/overview_page/filters/filter_notifier.dart';
+import 'package:exdock_backoffice/widgets/overview_page/filters/types/filter.dart';
 
 class FilterStagingGround {
   FilterStagingGround({

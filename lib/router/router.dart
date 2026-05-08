@@ -1,17 +1,19 @@
 // Flutter imports:
+
+// Flutter imports:
 import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:go_router/go_router.dart';
 
 // Project imports:
-import 'package:exdock_backend_client/globals/variables.dart';
-import 'package:exdock_backend_client/pages/login/login.dart';
-import 'package:exdock_backend_client/pages/page_wrapper/scope.dart';
-import 'package:exdock_backend_client/pages/page_wrapper/side_bar/side_bar.dart';
-import 'package:exdock_backend_client/pages/page_wrapper/top_bar/top_bar.dart';
-import 'package:exdock_backend_client/router/routes/routes.dart';
-import 'package:exdock_backend_client/utils/authentication/authentication_data.dart';
+import 'package:exdock_backoffice/globals/variables.dart';
+import 'package:exdock_backoffice/pages/login/login.dart';
+import 'package:exdock_backoffice/pages/page_wrapper/scope.dart';
+import 'package:exdock_backoffice/pages/page_wrapper/side_bar/side_bar.dart';
+import 'package:exdock_backoffice/pages/page_wrapper/top_bar/top_bar.dart';
+import 'package:exdock_backoffice/router/routes/routes.dart';
+import 'package:exdock_backoffice/utils/authentication/authentication_data.dart';
 
 final GoRouter router = GoRouter(
   routes: [
@@ -22,8 +24,6 @@ final GoRouter router = GoRouter(
     ShellRoute(
       redirect: (context, state) {
         try {
-          authData.email;
-          authData.password;
           return null;
         } on NotAuthenticatedException catch (_) {
           return '/login';

@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
-import 'package:exdock_backend_client/pages/catalog/product/info/product_info_card/product_info_card.dart';
+import 'package:exdock_backoffice/pages/catalog/product/info/product_info_card/product_info_card.dart';
 
 class ProductInfoCardTitle extends StatelessWidget {
   const ProductInfoCardTitle({

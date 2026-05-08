@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:dotted_decoration/dotted_decoration.dart';
 
 // Project imports:
-import 'package:exdock_backend_client/globals/globals.dart';
+import 'package:exdock_backoffice/globals/globals.dart';
 
 class OverviewPageRowCell extends StatelessWidget {
   const OverviewPageRowCell({

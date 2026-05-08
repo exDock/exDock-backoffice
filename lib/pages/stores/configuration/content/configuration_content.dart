@@ -2,8 +2,8 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
-import 'package:exdock_backend_client/pages/stores/configuration/content/configuration_content_synchronous.dart';
-import 'package:exdock_backend_client/widgets/loading/exdock_loading_page_animation.dart';
+import 'package:exdock_backoffice/pages/stores/configuration/content/configuration_content_synchronous.dart';
+import 'package:exdock_backoffice/widgets/loading/exdock_loading_page_animation.dart';
 
 class ConfigurationContent extends StatelessWidget {
   const ConfigurationContent({super.key, required this.configurationDataKey});

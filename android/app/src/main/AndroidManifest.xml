@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
-        android:label="exdock_backend_client"
+        android:label="exdock_backoffice"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

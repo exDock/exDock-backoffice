@@ -1,10 +1,10 @@
 // Project imports:
-import 'package:exdock_backend_client/utils/id_set_notifier.dart';
-import 'package:exdock_backend_client/widgets/overview_page/content/columns/overview_page_column.dart';
-import 'package:exdock_backend_client/widgets/overview_page/content/row/overview_page_page.dart';
-import 'package:exdock_backend_client/widgets/overview_page/content/row/overview_page_row.dart';
-import 'package:exdock_backend_client/widgets/overview_page/filters/filter_notifier.dart';
-import 'package:exdock_backend_client/widgets/pagination/page_notifier.dart';
+import 'package:exdock_backoffice/utils/id_set_notifier.dart';
+import 'package:exdock_backoffice/widgets/overview_page/content/row/overview_page_page.dart';
+import 'package:exdock_backoffice/widgets/overview_page/content/row/overview_page_row.dart';
+import 'package:exdock_backoffice/widgets/overview_page/filters/filter_notifier.dart';
+import 'package:exdock_backoffice/widgets/overview_page/visible_columns_selection/columns_notifier.dart';
+import 'package:exdock_backoffice/widgets/pagination/page_notifier.dart';
 
 class RetrieveOverviewPagePages {
   RetrieveOverviewPagePages({
@@ -13,7 +13,7 @@ class RetrieveOverviewPagePages {
     required this.allIds,
     required this.selectedIds,
     required this.pageNotifier,
-    this.columns,
+    required this.columns,
     this.pageSize = 10, // TODO: Add this default values to the configuration
     this.currentPage = 0,
     this.cacheForwards =
@@ -28,10 +28,11 @@ class RetrieveOverviewPagePages {
 
   final Future<List<OverviewPageRow>> Function(
     FilterNotifier filters,
-    List<OverviewPageColumnData>? columns,
+    ColumnsNotifier columns,
     Set<String> allIds,
     IdSetNotifier selectedIds,
     PageNotifier pageNotifier,
+    bool updateColumns,
   ) getRows;
   final FilterNotifier filters;
   final Set<String> allIds;
@@ -40,7 +41,7 @@ class RetrieveOverviewPagePages {
 
   final int pageSize;
   int currentPage;
-  final List<OverviewPageColumnData>? columns;
+  final ColumnsNotifier columns;
   final int cacheForwards;
   final int cacheBackwards;
   final List<OverviewPagePage?> pages = [];
@@ -59,6 +60,7 @@ class RetrieveOverviewPagePages {
       allIds,
       selectedIds,
       pageNotifier,
+      columns.value.isEmpty ? true : false,
     );
     final OverviewPagePage overviewPagePage = OverviewPagePage(
       pageNumber: pageNumber,
@@ -70,6 +72,7 @@ class RetrieveOverviewPagePages {
           allIds,
           selectedIds,
           pageNotifier,
+          false,
         );
       },
     );

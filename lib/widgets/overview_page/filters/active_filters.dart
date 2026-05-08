@@ -2,11 +2,11 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
-import 'package:exdock_backend_client/widgets/overview_page/filters/filter_notifier.dart';
-import 'package:exdock_backend_client/widgets/overview_page/filters/filter_widget.dart';
-import 'package:exdock_backend_client/widgets/overview_page/filters/types/filter.dart';
-import 'package:exdock_backend_client/widgets/pagination/page_notifier.dart';
-import 'package:exdock_backend_client/widgets/pagination/pagination_selector_simple.dart';
+import 'package:exdock_backoffice/widgets/overview_page/filters/filter_notifier.dart';
+import 'package:exdock_backoffice/widgets/overview_page/filters/filter_widget.dart';
+import 'package:exdock_backoffice/widgets/overview_page/filters/types/filter.dart';
+import 'package:exdock_backoffice/widgets/pagination/page_notifier.dart';
+import 'package:exdock_backoffice/widgets/pagination/pagination_selector_simple.dart';
 
 class ActiveFilters extends StatefulWidget {
   const ActiveFilters({

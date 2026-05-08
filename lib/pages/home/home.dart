@@ -2,8 +2,8 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
-import 'package:exdock_backend_client/pages/home/home_data.dart';
-import 'package:exdock_backend_client/pages/home/home_synchronuous.dart';
+import 'package:exdock_backoffice/pages/home/home_data.dart';
+import 'package:exdock_backoffice/pages/home/home_synchronuous.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});

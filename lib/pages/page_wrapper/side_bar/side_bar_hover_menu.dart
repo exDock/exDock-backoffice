@@ -5,8 +5,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 // Project imports:
-import 'package:exdock_backend_client/globals/globals.dart';
-import 'package:exdock_backend_client/pages/page_wrapper/side_bar/side_bar_hover_menu_data.dart';
+import 'package:exdock_backoffice/globals/globals.dart';
+import 'package:exdock_backoffice/pages/page_wrapper/side_bar/side_bar_hover_menu_data.dart';
 
 void removeHoverMenuOverlay(SideBarHoverMenuData sideBarHoverMenuData) {
   sideBarHoverMenuData.overlayEntry?.remove();

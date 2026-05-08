@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
-import 'package:exdock_backend_client/globals/styling.dart';
+import 'package:exdock_backoffice/globals/styling.dart';
 
 class CategoryList extends StatefulWidget {
   const CategoryList({

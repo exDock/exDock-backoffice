@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
-import 'package:exdock_backend_client/widgets/overview_page/content/row/overview_page_page.dart';
+import 'package:exdock_backoffice/widgets/overview_page/content/row/overview_page_page.dart';
 
 class OverviewPageContentBodySynchronous extends StatelessWidget {
   const OverviewPageContentBodySynchronous({

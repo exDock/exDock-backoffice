@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
-import 'package:exdock_backend_client/utils/id_set_notifier.dart';
+import 'package:exdock_backoffice/utils/id_set_notifier.dart';
 
 class SelectAllCheckbox extends StatefulWidget {
   const SelectAllCheckbox({super.key, required this.selectedIds});

@@ -1,6 +1,6 @@
 // Project imports:
-import 'package:exdock_backend_client/utils/id_set_notifier.dart';
-import 'package:exdock_backend_client/utils/user_parameters/user_parameter_collection.dart';
+import 'package:exdock_backoffice/utils/id_set_notifier.dart';
+import 'package:exdock_backoffice/utils/user_parameters/user_parameter_collection.dart';
 
 abstract class BulkAction {
   const BulkAction({

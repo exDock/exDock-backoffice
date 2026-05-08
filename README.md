@@ -1,4 +1,4 @@
-# exdock_backend_client
+# exdock_backoffice
 
 ExDock is an open source project with the goal of being the fastest E-commerce platform on the market. While being simple to use by non-technical people.
 

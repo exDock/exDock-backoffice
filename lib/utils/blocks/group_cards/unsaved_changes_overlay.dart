@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
-import 'package:exdock_backend_client/globals/globals.dart';
+import 'package:exdock_backoffice/globals/globals.dart';
 
 class UnsavedChangesOverlay extends StatefulWidget {
   const UnsavedChangesOverlay({

@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
-import 'package:exdock_backend_client/globals/styling.dart';
+import 'package:exdock_backoffice/globals/styling.dart';
 
 class Search extends StatefulWidget {
   const Search({super.key, required this.width});

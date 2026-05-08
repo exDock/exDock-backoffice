@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
-import 'package:exdock_backend_client/pages/catalog/category/category_data.dart';
+import 'package:exdock_backoffice/pages/catalog/category/category_data.dart';
 
 class CategoryEditTitle extends StatelessWidget {
   const CategoryEditTitle({

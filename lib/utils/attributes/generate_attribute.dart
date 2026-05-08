@@ -1,15 +1,18 @@
 // Flutter imports:
+
+// Flutter imports:
 import 'package:flutter/material.dart';
 
 // Project imports:
-import 'package:exdock_backend_client/utils/attributes/dropdown/dropdown_attribute.dart';
-import 'package:exdock_backend_client/utils/attributes/images/single_image_attribute.dart';
-import 'package:exdock_backend_client/utils/attributes/switch_attribute.dart';
-import 'package:exdock_backend_client/utils/attributes/text_field_attribute.dart';
-import 'package:exdock_backend_client/utils/attributes/text_field_number_attribute.dart';
-import 'package:exdock_backend_client/utils/attributes/text_field_price_attribute.dart';
-import 'package:exdock_backend_client/utils/attributes/wysiwyg_attribute.dart';
-import 'package:exdock_backend_client/utils/map_notifier.dart';
+import 'package:exdock_backoffice/utils/attributes/dropdown/dropdown_attribute.dart';
+import 'package:exdock_backoffice/utils/attributes/images/single_image_attribute.dart';
+import 'package:exdock_backoffice/utils/attributes/switch_attribute.dart';
+import 'package:exdock_backoffice/utils/attributes/text_field_attribute.dart';
+import 'package:exdock_backoffice/utils/attributes/text_field_number_attribute.dart';
+import 'package:exdock_backoffice/utils/attributes/text_field_password.dart';
+import 'package:exdock_backoffice/utils/attributes/text_field_price_attribute.dart';
+import 'package:exdock_backoffice/utils/attributes/wysiwyg_attribute.dart';
+import 'package:exdock_backoffice/utils/map_notifier.dart';
 
 class GenerateAttribute extends StatelessWidget {
   const GenerateAttribute(
@@ -70,6 +73,12 @@ class GenerateAttribute extends StatelessWidget {
     }
     if (attribute['attribute_type'] == 'dropdown') {
       return DropdownAttribute(
+        attribute: attribute,
+        changeAttributeMap: changeAttributeMap,
+      );
+    }
+    if (attribute['attribute_type'] == 'password') {
+      return TextFieldPassword(
         attribute: attribute,
         changeAttributeMap: changeAttributeMap,
       );

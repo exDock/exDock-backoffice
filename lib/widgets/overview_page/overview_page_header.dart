@@ -1,23 +1,25 @@
 // Flutter imports:
+
+// Flutter imports:
 import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:kumi_popup_window/kumi_popup_window.dart';
 
 // Project imports:
-import 'package:exdock_backend_client/globals/globals.dart';
-import 'package:exdock_backend_client/utils/id_set_notifier.dart';
-import 'package:exdock_backend_client/widgets/buttons/exdock_button.dart';
-import 'package:exdock_backend_client/widgets/input/exdock_search_bar.dart';
-import 'package:exdock_backend_client/widgets/overview_page/bulk/bulk_action.dart';
-import 'package:exdock_backend_client/widgets/overview_page/bulk/bulk_actions_button.dart';
-import 'package:exdock_backend_client/widgets/overview_page/content/columns/overview_page_column.dart';
-import 'package:exdock_backend_client/widgets/overview_page/filters/filter_notifier.dart';
-import 'package:exdock_backend_client/widgets/overview_page/filters/filter_setup/filter_setup.dart';
-import 'package:exdock_backend_client/widgets/overview_page/filters/popup/filters_popup.dart';
-import 'package:exdock_backend_client/widgets/overview_page/filters/types/string_filter.dart';
-import 'package:exdock_backend_client/widgets/overview_page/visible_columns_selection/visible_columns_notifier.dart';
-import 'package:exdock_backend_client/widgets/overview_page/visible_columns_selection/visible_columns_selection.dart';
+import 'package:exdock_backoffice/globals/globals.dart';
+import 'package:exdock_backoffice/router/router.dart';
+import 'package:exdock_backoffice/utils/id_set_notifier.dart';
+import 'package:exdock_backoffice/widgets/buttons/exdock_button.dart';
+import 'package:exdock_backoffice/widgets/input/exdock_search_bar.dart';
+import 'package:exdock_backoffice/widgets/overview_page/bulk/bulk_action.dart';
+import 'package:exdock_backoffice/widgets/overview_page/bulk/bulk_actions_button.dart';
+import 'package:exdock_backoffice/widgets/overview_page/filters/filter_notifier.dart';
+import 'package:exdock_backoffice/widgets/overview_page/filters/filter_setup/filter_setup.dart';
+import 'package:exdock_backoffice/widgets/overview_page/filters/popup/filters_popup.dart';
+import 'package:exdock_backoffice/widgets/overview_page/filters/types/string_filter.dart';
+import 'package:exdock_backoffice/widgets/overview_page/visible_columns_selection/columns_notifier.dart';
+import 'package:exdock_backoffice/widgets/overview_page/visible_columns_selection/visible_columns_selection.dart';
 
 class OverviewPageHeader extends StatefulWidget {
   const OverviewPageHeader({
@@ -29,15 +31,17 @@ class OverviewPageHeader extends StatefulWidget {
     required this.selectedIds,
     this.individualName,
     this.getFilters,
+    this.newUrl,
   });
 
-  final List<OverviewPageColumnData> columns;
-  final VisibleColumnsNotifier visibleColumns;
+  final ColumnsNotifier columns;
+  final ColumnsNotifier visibleColumns;
   final List<BulkAction> bulkActions;
   final FilterNotifier filters;
   final IdSetNotifier selectedIds;
   final String? individualName;
   final Future<List<FilterSetupData>> Function()? getFilters;
+  final String? newUrl;
 
   @override
   State<OverviewPageHeader> createState() => _OverviewPageHeaderState();
@@ -168,7 +172,12 @@ class _OverviewPageHeaderState extends State<OverviewPageHeader> {
                 // TODO: add new page button
                 ExdockButton(
                   label: addNewText,
-                  onPressed: () {},
+                  onPressed: () {
+                    if (widget.newUrl == null) {
+                      return;
+                    }
+                    router.push(widget.newUrl!);
+                  },
                   icon: Icons.add_rounded,
                 ),
               ],

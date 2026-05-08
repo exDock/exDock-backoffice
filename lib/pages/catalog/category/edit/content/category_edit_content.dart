@@ -2,9 +2,9 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
-import 'package:exdock_backend_client/pages/catalog/category/category_data.dart';
-import 'package:exdock_backend_client/pages/catalog/category/edit/content/category_edit_content_synchronous.dart';
-import 'package:exdock_backend_client/utils/map_notifier.dart';
+import 'package:exdock_backoffice/pages/catalog/category/category_data.dart';
+import 'package:exdock_backoffice/pages/catalog/category/edit/content/category_edit_content_synchronous.dart';
+import 'package:exdock_backoffice/utils/map_notifier.dart';
 
 class CategoryEditContent extends StatefulWidget {
   const CategoryEditContent({

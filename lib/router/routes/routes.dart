@@ -1,19 +1,22 @@
 // Flutter imports:
+
+// Flutter imports:
 import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:go_router/go_router.dart';
 
 // Project imports:
-import 'package:exdock_backend_client/router/routes/catalog.dart';
-import 'package:exdock_backend_client/router/routes/content.dart';
-import 'package:exdock_backend_client/router/routes/customers.dart';
-import 'package:exdock_backend_client/router/routes/home.dart';
-import 'package:exdock_backend_client/router/routes/marketing.dart';
-import 'package:exdock_backend_client/router/routes/reports.dart';
-import 'package:exdock_backend_client/router/routes/sales.dart';
-import 'package:exdock_backend_client/router/routes/stores.dart';
-import 'package:exdock_backend_client/router/routes/system.dart';
+import 'package:exdock_backoffice/router/routes/catalog.dart';
+import 'package:exdock_backoffice/router/routes/content.dart';
+import 'package:exdock_backoffice/router/routes/customers.dart';
+import 'package:exdock_backoffice/router/routes/files.dart';
+import 'package:exdock_backoffice/router/routes/home.dart';
+import 'package:exdock_backoffice/router/routes/marketing.dart';
+import 'package:exdock_backoffice/router/routes/reports.dart';
+import 'package:exdock_backoffice/router/routes/sales.dart';
+import 'package:exdock_backoffice/router/routes/stores.dart';
+import 'package:exdock_backoffice/router/routes/system.dart';
 
 List<GoRoute> getRoutes() {
   return [
@@ -30,6 +33,7 @@ List<GoRoute> getRoutes() {
     ...getContentRoutes(),
     ...getReportsRoutes(),
     ...getStoresRoutes(),
+    ...getFilesRoutes(),
     ...getSystemRoutes(),
   ];
 }

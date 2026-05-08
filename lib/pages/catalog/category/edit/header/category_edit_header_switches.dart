@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
-import 'package:exdock_backend_client/widgets/exdock_switch.dart';
+import 'package:exdock_backoffice/widgets/exdock_switch.dart';
 
 class CategoryEditHeaderSwitches extends StatefulWidget {
   const CategoryEditHeaderSwitches({super.key});

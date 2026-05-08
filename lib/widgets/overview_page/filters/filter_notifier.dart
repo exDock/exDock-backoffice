@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
-import 'package:exdock_backend_client/widgets/overview_page/filters/types/filter.dart';
+import 'package:exdock_backoffice/widgets/overview_page/filters/types/filter.dart';
 
 class FilterNotifier extends ValueNotifier<Map<String, FilterData>> {
   FilterNotifier() : super({});

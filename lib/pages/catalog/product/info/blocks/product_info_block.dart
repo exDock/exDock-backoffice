@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 // Project imports:
-import 'package:exdock_backend_client/utils/map_notifier.dart';
+import 'package:exdock_backoffice/utils/map_notifier.dart';
 
 class ProductInfoBlock extends StatefulWidget {
   const ProductInfoBlock({

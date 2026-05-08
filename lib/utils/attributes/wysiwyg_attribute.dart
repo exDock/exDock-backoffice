@@ -6,8 +6,8 @@ import 'package:fleather/fleather.dart';
 import 'package:parchment_to_html/parachment_to_html.dart';
 
 // Project imports:
-import 'package:exdock_backend_client/utils/map_notifier.dart';
-import 'package:exdock_backend_client/widgets/exdock_card.dart';
+import 'package:exdock_backoffice/utils/map_notifier.dart';
+import 'package:exdock_backoffice/widgets/exdock_card.dart';
 
 class WysiwygAttribute extends StatefulWidget {
   const WysiwygAttribute({
@@ -33,7 +33,8 @@ class _WysiwygAttributeState extends State<WysiwygAttribute> {
     super.initState();
 
     // Get the initial HTML value from the attribute
-    final String initialHtml = widget.attribute['current_attribute_value'] ?? '';
+    final String initialHtml =
+        widget.attribute['current_attribute_value'] ?? '';
 
     // Convert HTML to Delta
     final Delta delta = converter.decode(initialHtml);

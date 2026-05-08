@@ -2,8 +2,8 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
-import 'package:exdock_backend_client/globals/globals.dart';
-import 'package:exdock_backend_client/pages/page_wrapper/side_bar/exdock_navigation_rail.dart';
+import 'package:exdock_backoffice/globals/globals.dart';
+import 'package:exdock_backoffice/pages/page_wrapper/side_bar/exdock_navigation_rail.dart';
 
 class SideBar extends StatefulWidget {
   const SideBar({super.key, required this.width});

@@ -2,8 +2,8 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
-import 'package:exdock_backend_client/utils/map_notifier.dart';
-import 'package:exdock_backend_client/widgets/input/exdock_text_field.dart';
+import 'package:exdock_backoffice/utils/map_notifier.dart';
+import 'package:exdock_backoffice/widgets/input/exdock_text_field.dart';
 
 class TextFieldAttribute extends StatefulWidget {
   const TextFieldAttribute({

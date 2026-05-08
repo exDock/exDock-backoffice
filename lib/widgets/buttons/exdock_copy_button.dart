@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 // Project imports:
-import 'package:exdock_backend_client/globals/globals.dart';
+import 'package:exdock_backoffice/globals/globals.dart';
 
 class ExdockCopyButton extends StatefulWidget {
   const ExdockCopyButton({

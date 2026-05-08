@@ -1,21 +1,25 @@
 // Flutter imports:
+
+// Flutter imports:
 import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:flutter_switch/flutter_switch.dart';
 
 // Project imports:
-import 'package:exdock_backend_client/globals/globals.dart';
+import 'package:exdock_backoffice/globals/globals.dart';
 
 class ExDockSwitch extends StatefulWidget {
   const ExDockSwitch({
     super.key,
     required this.value,
     required this.onChanged,
+    this.isLong = false,
   });
 
   final bool value;
   final Function(bool) onChanged;
+  final bool isLong;
 
   @override
   State<ExDockSwitch> createState() => _ExDockSwitchState();
@@ -51,7 +55,7 @@ class _ExDockSwitchState extends State<ExDockSwitch> {
           activeToggleColor: Colors.white,
           inactiveColor: Theme.of(context).cardColor,
           inactiveToggleColor: darkColour,
-          width: 44,
+          width: widget.isLong ? 88 : 44,
           height: 24,
           toggleSize: 12,
         ),

@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:kumi_popup_window/kumi_popup_window.dart';
 
 // Project imports:
-import 'package:exdock_backend_client/widgets/exdock_close_icon.dart';
+import 'package:exdock_backoffice/widgets/exdock_close_icon.dart';
 
 class ExdockBigPopup extends StatelessWidget {
   const ExdockBigPopup({

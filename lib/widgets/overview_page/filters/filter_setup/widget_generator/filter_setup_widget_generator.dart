@@ -3,11 +3,11 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 // Project imports:
-import 'package:exdock_backend_client/widgets/overview_page/filters/filter_setup/filter_setup.dart';
-import 'package:exdock_backend_client/widgets/overview_page/filters/filter_setup/filter_setup_type_data.dart';
-import 'package:exdock_backend_client/widgets/overview_page/filters/filter_setup/widget_generator/filter_setup_range.dart';
-import 'package:exdock_backend_client/widgets/overview_page/filters/filter_setup/widget_generator/filter_setup_string.dart';
-import 'package:exdock_backend_client/widgets/overview_page/filters/filter_staging_ground.dart';
+import 'package:exdock_backoffice/widgets/overview_page/filters/filter_setup/filter_setup.dart';
+import 'package:exdock_backoffice/widgets/overview_page/filters/filter_setup/filter_setup_type_data.dart';
+import 'package:exdock_backoffice/widgets/overview_page/filters/filter_setup/widget_generator/filter_setup_range.dart';
+import 'package:exdock_backoffice/widgets/overview_page/filters/filter_setup/widget_generator/filter_setup_string.dart';
+import 'package:exdock_backoffice/widgets/overview_page/filters/filter_staging_ground.dart';
 
 class FilterSetupWidgetGenerator extends StatelessWidget {
   const FilterSetupWidgetGenerator({

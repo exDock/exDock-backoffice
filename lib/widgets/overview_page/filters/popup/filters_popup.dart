@@ -5,10 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:kumi_popup_window/kumi_popup_window.dart';
 
 // Project imports:
-import 'package:exdock_backend_client/widgets/loading/exdock_loading_page_animation.dart';
-import 'package:exdock_backend_client/widgets/overview_page/filters/filter_notifier.dart';
-import 'package:exdock_backend_client/widgets/overview_page/filters/filter_setup/filter_setup.dart';
-import 'package:exdock_backend_client/widgets/overview_page/filters/popup/filters_popup_sync.dart';
+import 'package:exdock_backoffice/widgets/loading/exdock_loading_page_animation.dart';
+import 'package:exdock_backoffice/widgets/overview_page/filters/filter_notifier.dart';
+import 'package:exdock_backoffice/widgets/overview_page/filters/filter_setup/filter_setup.dart';
+import 'package:exdock_backoffice/widgets/overview_page/filters/popup/filters_popup_sync.dart';
 
 class FiltersPopup extends StatelessWidget {
   const FiltersPopup({

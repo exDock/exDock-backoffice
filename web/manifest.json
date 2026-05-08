@@ -1,6 +1,6 @@
 {
-    "name": "exdock_backend_client",
-    "short_name": "exdock_backend_client",
+    "name": "exdock_backoffice",
+    "short_name": "exdock_backoffice",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

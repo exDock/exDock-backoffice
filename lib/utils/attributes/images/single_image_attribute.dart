@@ -1,4 +1,6 @@
 // Flutter imports:
+
+// Flutter imports:
 import 'package:flutter/material.dart';
 
 // Package imports:
@@ -6,8 +8,8 @@ import 'package:dotted_decoration/dotted_decoration.dart';
 import 'package:kumi_popup_window/kumi_popup_window.dart';
 
 // Project imports:
-import 'package:exdock_backend_client/utils/attributes/images/single_image_attribute_popup.dart';
-import 'package:exdock_backend_client/utils/map_notifier.dart';
+import 'package:exdock_backoffice/utils/attributes/images/single_image_attribute_popup.dart';
+import 'package:exdock_backoffice/utils/map_notifier.dart';
 
 class SingleImageAttribute extends StatefulWidget {
   const SingleImageAttribute(

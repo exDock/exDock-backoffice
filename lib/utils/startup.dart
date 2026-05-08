@@ -1,11 +1,22 @@
 // Package imports:
+
+// Flutter imports:
+import 'package:flutter/services.dart';
+
+// Package imports:
 import 'package:shared_preferences/shared_preferences.dart';
 
 // Project imports:
-import 'package:exdock_backend_client/globals/variables.dart';
-import 'package:exdock_backend_client/utils/authentication/authentication_data.dart';
+import 'package:exdock_backoffice/globals/variables.dart';
+import 'package:exdock_backoffice/utils/settings.dart';
 
 Future<void> applicationStartUp() async {
-  prefs = await SharedPreferences.getInstance();
-  authData = AuthenticationData(); // uses prefs
+  const SharedPreferencesWithCacheOptions preferencesWithCacheOptions =
+      SharedPreferencesWithCacheOptions();
+
+  prefs = await SharedPreferencesWithCache.create(
+    cacheOptions: preferencesWithCacheOptions,
+  );
+  final String jsonConfig = await rootBundle.loadString("assets/config.json");
+  settings = Settings(jsonConfig);
 }

@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
-import 'package:exdock_backend_client/widgets/pagination/page_notifier.dart';
+import 'package:exdock_backoffice/widgets/pagination/page_notifier.dart';
 
 class PaginationSelectorSimple extends StatefulWidget {
   const PaginationSelectorSimple({super.key, required this.pageNotifier});

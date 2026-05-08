@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
-import 'package:exdock_backend_client/pages/stores/configuration/configuration_menu_sub_type.dart';
+import 'package:exdock_backoffice/pages/stores/configuration/configuration_menu_sub_type.dart';
 
 class ConfigurationSidebar extends StatefulWidget {
   final Map<String, List<ConfigurationMenuSubType>> menuItems;

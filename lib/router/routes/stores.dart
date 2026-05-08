@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 // Project imports:
-import 'package:exdock_backend_client/pages/stores/configuration/configuration.dart';
+import 'package:exdock_backoffice/pages/stores/configuration/configuration.dart';
 
 List<GoRoute> getStoresRoutes() {
   return [

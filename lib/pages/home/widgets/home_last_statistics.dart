@@ -2,8 +2,8 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
-import 'package:exdock_backend_client/pages/home/home_data.dart';
-import 'package:exdock_backend_client/pages/home/widgets/dashboard_table_3_columns.dart';
+import 'package:exdock_backoffice/pages/home/home_data.dart';
+import 'package:exdock_backoffice/pages/home/widgets/dashboard_table_3_columns.dart';
 
 class HomeLastStatistics extends StatelessWidget {
   const HomeLastStatistics({

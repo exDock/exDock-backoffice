@@ -2,13 +2,13 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
-import 'package:exdock_backend_client/globals/globals.dart';
-import 'package:exdock_backend_client/pages/catalog/category/category_data.dart';
-import 'package:exdock_backend_client/pages/catalog/category/edit/header/category_edit_header_switches.dart';
-import 'package:exdock_backend_client/pages/catalog/category/edit/header/category_edit_title.dart';
-import 'package:exdock_backend_client/pages/catalog/category/edit/header/save_category_changes.dart';
-import 'package:exdock_backend_client/utils/map_notifier.dart';
-import 'package:exdock_backend_client/widgets/buttons/exdock_save_button.dart';
+import 'package:exdock_backoffice/globals/globals.dart';
+import 'package:exdock_backoffice/pages/catalog/category/category_data.dart';
+import 'package:exdock_backoffice/pages/catalog/category/edit/header/category_edit_header_switches.dart';
+import 'package:exdock_backoffice/pages/catalog/category/edit/header/category_edit_title.dart';
+import 'package:exdock_backoffice/pages/catalog/category/edit/header/save_category_changes.dart';
+import 'package:exdock_backoffice/utils/map_notifier.dart';
+import 'package:exdock_backoffice/widgets/buttons/exdock_save_button.dart';
 
 class CategoryEditHeader extends StatefulWidget {
   const CategoryEditHeader({

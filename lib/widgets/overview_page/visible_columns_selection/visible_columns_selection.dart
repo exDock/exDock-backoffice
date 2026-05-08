@@ -2,9 +2,9 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
-import 'package:exdock_backend_client/widgets/overview_page/content/columns/overview_page_column.dart';
-import 'package:exdock_backend_client/widgets/overview_page/visible_columns_selection/visible_column_selection.dart';
-import 'package:exdock_backend_client/widgets/overview_page/visible_columns_selection/visible_columns_notifier.dart';
+import 'package:exdock_backoffice/widgets/overview_page/content/columns/overview_page_column.dart';
+import 'package:exdock_backoffice/widgets/overview_page/visible_columns_selection/columns_notifier.dart';
+import 'package:exdock_backoffice/widgets/overview_page/visible_columns_selection/visible_column_selection.dart';
 
 class VisibleColumnsSelection extends StatelessWidget {
   const VisibleColumnsSelection({
@@ -13,8 +13,8 @@ class VisibleColumnsSelection extends StatelessWidget {
     required this.visibleColumns,
   });
 
-  final List<OverviewPageColumnData> columns;
-  final VisibleColumnsNotifier visibleColumns;
+  final ColumnsNotifier columns;
+  final ColumnsNotifier visibleColumns;
 
   @override
   Widget build(BuildContext context) {
@@ -32,9 +32,9 @@ class VisibleColumnsSelection extends StatelessWidget {
             mainAxisSpacing: 8,
             crossAxisSpacing: 8,
             childAspectRatio: 16 / 6,
-            children: List<Widget>.generate(columns.length, (index) {
+            children: List<Widget>.generate(columns.value.length, (index) {
               return VisibleColumnSelection(
-                column: columns[index],
+                column: columns.value[index],
                 visibleColumns: visibleColumns,
                 onToggle: (OverviewPageColumnData column, bool isVisible) {
                   if (isVisible) {

@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 // Project imports:
-import 'package:exdock_backend_client/utils/map_notifier.dart';
-import 'package:exdock_backend_client/widgets/exdock_card.dart';
+import 'package:exdock_backoffice/utils/map_notifier.dart';
+import 'package:exdock_backoffice/widgets/exdock_card.dart';
 
 class TextFieldNumberAttribute extends StatefulWidget {
   const TextFieldNumberAttribute({

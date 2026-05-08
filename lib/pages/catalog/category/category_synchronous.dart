@@ -9,11 +9,11 @@ import 'package:flutter/services.dart';
 import 'package:kumi_popup_window/kumi_popup_window.dart';
 
 // Project imports:
-import 'package:exdock_backend_client/pages/catalog/category/category_data.dart';
-import 'package:exdock_backend_client/pages/catalog/category/edit/category_edit.dart';
-import 'package:exdock_backend_client/pages/catalog/category/selection_bar/edit_category_structure_popup.dart';
-import 'package:exdock_backend_client/pages/catalog/category/selection_bar/sub_category_row.dart';
-import 'package:exdock_backend_client/pages/catalog/category/selection_bar/top_category_row.dart';
+import 'package:exdock_backoffice/pages/catalog/category/category_data.dart';
+import 'package:exdock_backoffice/pages/catalog/category/edit/category_edit.dart';
+import 'package:exdock_backoffice/pages/catalog/category/selection_bar/edit_category_structure_popup.dart';
+import 'package:exdock_backoffice/pages/catalog/category/selection_bar/sub_category_row.dart';
+import 'package:exdock_backoffice/pages/catalog/category/selection_bar/top_category_row.dart';
 
 class CategorySynchronous extends StatefulWidget {
   const CategorySynchronous({

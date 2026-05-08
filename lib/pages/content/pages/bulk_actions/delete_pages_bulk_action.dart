@@ -1,5 +1,5 @@
 // Project imports:
-import 'package:exdock_backend_client/widgets/overview_page/bulk/bulk_action.dart';
+import 'package:exdock_backoffice/widgets/overview_page/bulk/bulk_action.dart';
 
 class DeletePagesBulkAction extends BulkAction {
   DeletePagesBulkAction({

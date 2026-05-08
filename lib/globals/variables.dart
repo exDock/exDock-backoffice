@@ -1,15 +1,13 @@
 // Flutter imports:
+
+// Flutter imports:
 import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:shared_preferences/shared_preferences.dart';
 
 // Project imports:
-import 'package:exdock_backend_client/utils/authentication/authentication_data.dart';
-
-late final SharedPreferences prefs;
-
-late final AuthenticationData authData;
+import 'package:exdock_backoffice/utils/settings.dart';
 
 // Custom ChangeNotifier for a String value
 class StringNotifier extends ChangeNotifier {
@@ -28,3 +26,7 @@ class StringNotifier extends ChangeNotifier {
 }
 
 StringNotifier pathNotifier = StringNotifier(Uri.base.path);
+
+late final SharedPreferencesWithCache prefs;
+
+late final Settings settings;

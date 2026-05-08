@@ -1,1 +1,1 @@
-export 'package:exdock_backend_client/globals/styling.dart';
+export 'package:exdock_backoffice/globals/styling.dart';

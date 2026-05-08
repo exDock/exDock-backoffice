@@ -1,13 +1,15 @@
 // Flutter imports:
+
+// Flutter imports:
 import 'package:flutter/material.dart';
 
 // Project imports:
-import 'package:exdock_backend_client/globals/globals.dart';
-import 'package:exdock_backend_client/utils/id_set_notifier.dart';
-import 'package:exdock_backend_client/widgets/overview_page/content/columns/overview_page_column.dart';
-import 'package:exdock_backend_client/widgets/overview_page/content/row/overview_page_row_cell.dart';
-import 'package:exdock_backend_client/widgets/overview_page/content/row/overview_page_row_cell_string.dart';
-import 'package:exdock_backend_client/widgets/overview_page/visible_columns_selection/visible_columns_notifier.dart';
+import 'package:exdock_backoffice/globals/globals.dart';
+import 'package:exdock_backoffice/utils/id_set_notifier.dart';
+import 'package:exdock_backoffice/widgets/overview_page/content/columns/overview_page_column.dart';
+import 'package:exdock_backoffice/widgets/overview_page/content/row/overview_page_row_cell.dart';
+import 'package:exdock_backoffice/widgets/overview_page/content/row/overview_page_row_cell_string.dart';
+import 'package:exdock_backoffice/widgets/overview_page/visible_columns_selection/columns_notifier.dart';
 
 class OverviewPageRow extends StatefulWidget {
   const OverviewPageRow({
@@ -25,7 +27,7 @@ class OverviewPageRow extends StatefulWidget {
   final String name;
 
   /// All the columns that are visible in the table
-  final VisibleColumnsNotifier visibleColumns;
+  final ColumnsNotifier visibleColumns;
 
   /// All column values | {key: value}
   final Map<String, dynamic> columnValues;
@@ -78,7 +80,9 @@ class _OverviewPageRowState extends State<OverviewPageRow> {
                   onChanged: (value) {
                     value ??= false;
                     if (value) {
-                      widget.selectedIds.addId(widget.id);
+                      try {
+                        widget.selectedIds.addId(widget.id);
+                      } catch (_) {}
                     } else {
                       widget.selectedIds.removeId(widget.id);
                     }

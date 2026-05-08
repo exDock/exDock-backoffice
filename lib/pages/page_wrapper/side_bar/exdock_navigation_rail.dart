@@ -7,9 +7,9 @@ import 'package:hoverable_navigation_rail/hoverable_navigation_rail.dart';
 import 'package:hoverable_navigation_rail/hoverable_navigation_rail_destination.dart';
 
 // Project imports:
-import 'package:exdock_backend_client/pages/page_wrapper/side_bar/navigation_rail_destinations.dart';
-import 'package:exdock_backend_client/pages/page_wrapper/side_bar/side_bar_hover_menu.dart';
-import 'package:exdock_backend_client/pages/page_wrapper/side_bar/side_bar_hover_menu_data.dart';
+import 'package:exdock_backoffice/pages/page_wrapper/side_bar/navigation_rail_destinations.dart';
+import 'package:exdock_backoffice/pages/page_wrapper/side_bar/side_bar_hover_menu.dart';
+import 'package:exdock_backoffice/pages/page_wrapper/side_bar/side_bar_hover_menu_data.dart';
 
 class ExDockNavigationRail extends StatefulWidget {
   const ExDockNavigationRail({super.key});

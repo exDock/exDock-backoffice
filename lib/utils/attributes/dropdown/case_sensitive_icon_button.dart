@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:material_symbols_icons/material_symbols_icons.dart';
 
 // Project imports:
-import 'package:exdock_backend_client/globals/styling.dart';
+import 'package:exdock_backoffice/globals/styling.dart';
 
 class CaseSensitiveIconButton extends StatefulWidget {
   const CaseSensitiveIconButton({super.key, required this.onChanged});
@@ -31,10 +31,12 @@ class _CaseSensitiveIconButtonState extends State<CaseSensitiveIconButton> {
       },
       padding: const EdgeInsets.all(0),
       style: ButtonStyle(
-        backgroundColor:
-            caseSensitiveSearch ? const WidgetStatePropertyAll(mainColour) : null,
-        foregroundColor:
-            caseSensitiveSearch ? const WidgetStatePropertyAll(Colors.white) : null,
+        backgroundColor: caseSensitiveSearch
+            ? const WidgetStatePropertyAll(mainColour)
+            : null,
+        foregroundColor: caseSensitiveSearch
+            ? const WidgetStatePropertyAll(Colors.white)
+            : null,
       ),
       icon: const Icon(Symbols.match_case_rounded),
     );

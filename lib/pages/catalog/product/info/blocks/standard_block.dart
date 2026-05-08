@@ -2,9 +2,9 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
-import 'package:exdock_backend_client/pages/catalog/product/info/product_info_card/product_info_card_title.dart';
-import 'package:exdock_backend_client/utils/attributes/generate_attribute.dart';
-import 'package:exdock_backend_client/utils/map_notifier.dart';
+import 'package:exdock_backoffice/pages/catalog/product/info/product_info_card/product_info_card_title.dart';
+import 'package:exdock_backoffice/utils/attributes/generate_attribute.dart';
+import 'package:exdock_backoffice/utils/map_notifier.dart';
 
 class StandardBlock extends StatefulWidget {
   const StandardBlock({

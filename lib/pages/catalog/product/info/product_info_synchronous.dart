@@ -1,11 +1,13 @@
 // Flutter imports:
+
+// Flutter imports:
 import 'package:flutter/material.dart';
 
 // Project imports:
-import 'package:exdock_backend_client/pages/catalog/product/info/blocks/generate_block.dart';
-import 'package:exdock_backend_client/pages/catalog/product/info/blocks/product_info_block.dart';
-import 'package:exdock_backend_client/pages/catalog/product/info/top_bar/top_bar.dart';
-import 'package:exdock_backend_client/utils/map_notifier.dart';
+import 'package:exdock_backoffice/pages/catalog/product/info/blocks/generate_block.dart';
+import 'package:exdock_backoffice/pages/catalog/product/info/blocks/product_info_block.dart';
+import 'package:exdock_backoffice/pages/catalog/product/info/top_bar/top_bar.dart';
+import 'package:exdock_backoffice/utils/map_notifier.dart';
 
 class ProductInfoSynchronous extends StatelessWidget {
   const ProductInfoSynchronous({
@@ -20,7 +22,8 @@ class ProductInfoSynchronous extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final MapNotifier changeAttributeMap = MapNotifier();
-    final List<MapEntry<String, dynamic>> blocksEntriesList = blocks.entries.toList();
+    final List<MapEntry<String, dynamic>> blocksEntriesList =
+        blocks.entries.toList();
 
     saveValues() {
       changeAttributeMap.reset();

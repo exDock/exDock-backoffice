@@ -1,18 +1,20 @@
 // Flutter imports:
+
+// Flutter imports:
 import 'package:flutter/material.dart';
 
 // Project imports:
-import 'package:exdock_backend_client/utils/id_set_notifier.dart';
-import 'package:exdock_backend_client/widgets/overview_page/bulk/bulk_action.dart';
-import 'package:exdock_backend_client/widgets/overview_page/content/columns/overview_page_column.dart';
-import 'package:exdock_backend_client/widgets/overview_page/content/overview_page_content.dart';
-import 'package:exdock_backend_client/widgets/overview_page/content/row/retrieve_overview_page_pages.dart';
-import 'package:exdock_backend_client/widgets/overview_page/filters/active_filters.dart';
-import 'package:exdock_backend_client/widgets/overview_page/filters/filter_notifier.dart';
-import 'package:exdock_backend_client/widgets/overview_page/filters/filter_setup/filter_setup.dart';
-import 'package:exdock_backend_client/widgets/overview_page/overview_page_header.dart';
-import 'package:exdock_backend_client/widgets/overview_page/visible_columns_selection/visible_columns_notifier.dart';
-import 'package:exdock_backend_client/widgets/pagination/page_notifier.dart';
+import 'package:exdock_backoffice/utils/id_set_notifier.dart';
+import 'package:exdock_backoffice/widgets/overview_page/bulk/bulk_action.dart';
+import 'package:exdock_backoffice/widgets/overview_page/content/columns/overview_page_column.dart';
+import 'package:exdock_backoffice/widgets/overview_page/content/overview_page_content.dart';
+import 'package:exdock_backoffice/widgets/overview_page/content/row/retrieve_overview_page_pages.dart';
+import 'package:exdock_backoffice/widgets/overview_page/filters/active_filters.dart';
+import 'package:exdock_backoffice/widgets/overview_page/filters/filter_notifier.dart';
+import 'package:exdock_backoffice/widgets/overview_page/filters/filter_setup/filter_setup.dart';
+import 'package:exdock_backoffice/widgets/overview_page/overview_page_header.dart';
+import 'package:exdock_backoffice/widgets/overview_page/visible_columns_selection/columns_notifier.dart';
+import 'package:exdock_backoffice/widgets/pagination/page_notifier.dart';
 
 class OverviewPage extends StatefulWidget {
   const OverviewPage({
@@ -27,10 +29,11 @@ class OverviewPage extends StatefulWidget {
     required this.selectedIds,
     required this.pageNotifier,
     this.getFilters,
+    this.newUrl,
   });
 
-  final List<OverviewPageColumnData> columns;
-  final VisibleColumnsNotifier visibleColumns;
+  final ColumnsNotifier columns;
+  final ColumnsNotifier visibleColumns;
   final RetrieveOverviewPagePages getPages;
   final List<BulkAction> bulkActions;
   final FilterNotifier filters;
@@ -39,6 +42,7 @@ class OverviewPage extends StatefulWidget {
   final IdSetNotifier selectedIds;
   final PageNotifier pageNotifier;
   final Future<List<FilterSetupData>> Function()? getFilters;
+  final String? newUrl;
 
   @override
   State<OverviewPage> createState() => _OverviewPageState();
@@ -49,7 +53,7 @@ class _OverviewPageState extends State<OverviewPage> {
   void initState() {
     super.initState();
 
-    for (final OverviewPageColumnData column in widget.columns) {
+    for (final OverviewPageColumnData column in widget.columns.value) {
       if (!widget.visibleColumns.containsColumn(column)) {
         widget.visibleColumns.addColumn(column);
       }
@@ -68,6 +72,7 @@ class _OverviewPageState extends State<OverviewPage> {
           selectedIds: widget.selectedIds,
           individualName: widget.individualName,
           getFilters: widget.getFilters,
+          newUrl: widget.newUrl,
         ),
         Padding(
           padding: const EdgeInsets.only(top: 124, left: 24, right: 24),
