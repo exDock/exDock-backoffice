@@ -1,4 +1,6 @@
 // Flutter imports:
+
+// Flutter imports:
 import 'package:flutter/material.dart';
 
 // Package imports:
@@ -32,12 +34,30 @@ class _SystemServerStatusState extends State<SystemServerStatus> {
   );
   late Future<WebSocketChannel> _channel;
 
+  void handleWsData(ValueNotifier values, Map<String, dynamic> data) {
+    if (data.containsKey("type") && data["type"] == "serverHealth") {
+      final ServerHealth serverHealth = ServerHealth(
+        serverStatus: fromStringToStatus(data["serverHealth"]),
+        timestamp: data["timeStamp"],
+        processCpuUsage: data["processCpuLoad"],
+        systemCpuUsage: data["systemCpuLoad"],
+        totalMemory: data["totalMemory"],
+        usedMemory: data["usedMemory"],
+      );
+      values.value = serverHealth;
+    }
+  }
+
   @override
   void initState() {
     try {
       final String baseUrl = settings.getSetting("base_url");
       final Uri uri = Uri.parse("$baseUrl/api/v1/docker/getData");
-      _channel = getWebsocketChannel(uri.convertToWs(), _serverHealthNotifier);
+      _channel = getWebsocketChannel(
+        uri.convertToWs(),
+        _serverHealthNotifier,
+        handleWsData,
+      );
     } catch (e) {
       if (e is NotAuthenticatedException) {
         throw NotAuthenticatedException("");

@@ -5,7 +5,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 
 // Project imports:
-import 'package:exdock_backoffice/pages/content/templates/page_info/page_info_synchronous.dart';
+import 'package:exdock_backoffice/pages/content/pages/page_info/page_info_synchronous.dart';
 import 'package:exdock_backoffice/utils/HTTP/http_data.dart';
 import 'package:exdock_backoffice/utils/HTTP/post_requests.dart';
 import 'package:exdock_backoffice/utils/map_notifier.dart';
@@ -33,7 +33,7 @@ class _PageInfoState extends State<PageInfo> {
 
     if (!isNewPage) {
       body["address_names"] = [
-        {"address": "template", "id": "/$url"}
+        {"address": "url", "id": "/$url"}
       ];
     } else {
       body["address_names"] = [];
@@ -62,10 +62,13 @@ class _PageInfoState extends State<PageInfo> {
               url: widget.url,
               blocks: data,
               changeAttributeMap: MapNotifier(),
-              isNewTemplate: widget.isNewPage,
+              isNewPage: widget.isNewPage,
             );
           }
-          return const Center(child: CircularProgressIndicator());
+
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
         });
   }
 }

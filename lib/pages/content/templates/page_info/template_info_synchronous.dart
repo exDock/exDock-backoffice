@@ -12,8 +12,8 @@ import 'package:exdock_backoffice/utils/HTTP/post_requests.dart';
 import 'package:exdock_backoffice/utils/HTTP/put_requests.dart';
 import 'package:exdock_backoffice/utils/map_notifier.dart';
 
-class PageInfoSynchronous extends StatelessWidget {
-  const PageInfoSynchronous({
+class TemplateInfoSynchronous extends StatelessWidget {
+  const TemplateInfoSynchronous({
     super.key,
     required this.url,
     required this.blocks,
