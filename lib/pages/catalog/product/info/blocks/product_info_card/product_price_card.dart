@@ -1,16 +1,14 @@
 // Flutter imports:
 
-// Flutter imports:
-import 'package:flutter/material.dart';
-
 // Package imports:
 import 'package:calendar_date_picker2/calendar_date_picker2.dart';
-
 // Project imports:
 import 'package:exdock_backoffice/globals/styling.dart';
 import 'package:exdock_backoffice/pages/catalog/product/info/product_info_card/product_info_card_title.dart';
 import 'package:exdock_backoffice/utils/attributes/generate_attribute.dart';
 import 'package:exdock_backoffice/utils/map_notifier.dart';
+// Flutter imports:
+import 'package:flutter/material.dart';
 
 class ProductPriceCard extends StatefulWidget {
   const ProductPriceCard({
@@ -65,7 +63,7 @@ class _ProductPriceCardState extends State<ProductPriceCard> {
 
     final List<dynamic> attributes = widget.block.value['attributes'];
     final Map<String, dynamic> saleDatesAttribute = attributes.firstWhere(
-      (element) => element['attribute_id'] == "product_sale_dates",
+      (element) => element['attribute_id'] == "product_saleDates",
       orElse: () => {},
     );
     final String? startDateString =
@@ -98,7 +96,7 @@ class _ProductPriceCardState extends State<ProductPriceCard> {
             itemBuilder: (context, index) {
               final Map<String, dynamic> currentAttribute =
                   widget.block.value['attributes'][index];
-              if (currentAttribute['attribute_id'] != "product_sale_dates") {
+              if (currentAttribute['attribute_id'] != "product_saleDates") {
                 Widget child = GenerateAttribute(
                   attribute: widget.block.value['attributes'][index],
                   changeAttributeMap: widget.changeAttributeMap,

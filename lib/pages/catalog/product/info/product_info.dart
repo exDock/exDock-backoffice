@@ -1,14 +1,13 @@
 // Dart imports:
 import 'dart:convert';
 
-// Flutter imports:
-import 'package:flutter/material.dart';
-
 // Project imports:
 import 'package:exdock_backoffice/pages/catalog/product/info/product_info_synchronous.dart';
 import 'package:exdock_backoffice/utils/HTTP/http_data.dart';
 import 'package:exdock_backoffice/utils/HTTP/post_requests.dart';
 import 'package:exdock_backoffice/utils/map_notifier.dart';
+// Flutter imports:
+import 'package:flutter/material.dart';
 
 class ProductInfo extends StatefulWidget {
   const ProductInfo({
@@ -28,8 +27,13 @@ class _ProductInfoState extends State<ProductInfo> {
       "/api/v1/getBlockData",
       jsonEncode(
         {
-          "product_id": productId,
           "page_name": "product_info",
+          "address_names": [
+            {
+              "id": productId,
+              "address": "product",
+            }
+          ]
         },
       ),
     );
