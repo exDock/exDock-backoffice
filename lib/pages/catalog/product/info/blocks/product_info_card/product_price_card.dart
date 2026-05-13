@@ -1,14 +1,16 @@
 // Flutter imports:
 
+// Flutter imports:
+import 'package:flutter/material.dart';
+
 // Package imports:
 import 'package:calendar_date_picker2/calendar_date_picker2.dart';
+
 // Project imports:
 import 'package:exdock_backoffice/globals/styling.dart';
 import 'package:exdock_backoffice/pages/catalog/product/info/product_info_card/product_info_card_title.dart';
 import 'package:exdock_backoffice/utils/attributes/generate_attribute.dart';
 import 'package:exdock_backoffice/utils/map_notifier.dart';
-// Flutter imports:
-import 'package:flutter/material.dart';
 
 class ProductPriceCard extends StatefulWidget {
   const ProductPriceCard({

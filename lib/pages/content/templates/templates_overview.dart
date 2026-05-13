@@ -3,6 +3,9 @@
 // Dart imports:
 import 'dart:convert';
 
+// Flutter imports:
+import 'package:flutter/material.dart';
+
 // Project imports:
 import 'package:exdock_backoffice/pages/content/pages/bulk_actions/delete_pages_bulk_action.dart';
 import 'package:exdock_backoffice/router/router.dart';
@@ -20,8 +23,6 @@ import 'package:exdock_backoffice/widgets/overview_page/filters/filter_setup/fil
 import 'package:exdock_backoffice/widgets/overview_page/overview_page.dart';
 import 'package:exdock_backoffice/widgets/overview_page/visible_columns_selection/columns_notifier.dart';
 import 'package:exdock_backoffice/widgets/pagination/page_notifier.dart';
-// Flutter imports:
-import 'package:flutter/material.dart';
 
 class TemplatesOverview extends StatefulWidget {
   const TemplatesOverview({super.key});

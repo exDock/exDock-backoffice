@@ -1,5 +1,11 @@
 // Flutter imports:
 
+// Flutter imports:
+import 'package:flutter/material.dart';
+
+// Package imports:
+import 'package:kumi_popup_window/kumi_popup_window.dart';
+
 // Project imports:
 import 'package:exdock_backoffice/globals/globals.dart';
 import 'package:exdock_backoffice/router/router.dart';
@@ -14,10 +20,6 @@ import 'package:exdock_backoffice/widgets/overview_page/filters/popup/filters_po
 import 'package:exdock_backoffice/widgets/overview_page/filters/types/string_filter.dart';
 import 'package:exdock_backoffice/widgets/overview_page/visible_columns_selection/columns_notifier.dart';
 import 'package:exdock_backoffice/widgets/overview_page/visible_columns_selection/visible_columns_selection.dart';
-// Flutter imports:
-import 'package:flutter/material.dart';
-// Package imports:
-import 'package:kumi_popup_window/kumi_popup_window.dart';
 
 class OverviewPageHeader extends StatefulWidget {
   const OverviewPageHeader({
