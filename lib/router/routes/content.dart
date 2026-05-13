@@ -4,6 +4,7 @@
 import 'package:flutter/material.dart';
 
 // Package imports:
+import 'package:exdock_backend_client/pages/content/blocks/blocks_overview.dart';
 import 'package:go_router/go_router.dart';
 
 // Project imports:
@@ -86,6 +87,10 @@ List<GoRoute> getContentRoutes() {
           isNewPage: false,
         );
       },
+    ),
+    GoRoute(
+      path: '/content/blocks',
+      builder: (context, state) => const BlocksOverview(),
     ),
   ];
 }
