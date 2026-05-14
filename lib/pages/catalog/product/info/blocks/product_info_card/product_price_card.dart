@@ -65,7 +65,7 @@ class _ProductPriceCardState extends State<ProductPriceCard> {
 
     final List<dynamic> attributes = widget.block.value['attributes'];
     final Map<String, dynamic> saleDatesAttribute = attributes.firstWhere(
-      (element) => element['attribute_id'] == "product_sale_dates",
+      (element) => element['attribute_id'] == "product_saleDates",
       orElse: () => {},
     );
     final String? startDateString =
@@ -98,7 +98,7 @@ class _ProductPriceCardState extends State<ProductPriceCard> {
             itemBuilder: (context, index) {
               final Map<String, dynamic> currentAttribute =
                   widget.block.value['attributes'][index];
-              if (currentAttribute['attribute_id'] != "product_sale_dates") {
+              if (currentAttribute['attribute_id'] != "product_saleDates") {
                 Widget child = GenerateAttribute(
                   attribute: widget.block.value['attributes'][index],
                   changeAttributeMap: widget.changeAttributeMap,

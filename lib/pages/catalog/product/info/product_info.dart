@@ -28,8 +28,13 @@ class _ProductInfoState extends State<ProductInfo> {
       "/api/v1/getBlockData",
       jsonEncode(
         {
-          "product_id": productId,
           "page_name": "product_info",
+          "address_names": [
+            {
+              "id": productId,
+              "address": "product",
+            }
+          ]
         },
       ),
     );

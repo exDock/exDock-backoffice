@@ -65,7 +65,7 @@ class _ProductsOverviewState extends State<ProductsOverview> {
     final List<OverviewPageRow> rows = [];
 
     for (final json in products) {
-      final id = json["_id"];
+      final id = json["_id"]["\$oid"];
       allIds.add(id);
 
       if (updateColumns) {
